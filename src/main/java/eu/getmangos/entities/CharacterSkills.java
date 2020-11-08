@@ -1,7 +1,6 @@
 package eu.getmangos.entities;
 
 import java.io.Serializable;
-import java.sql.*;
 import javax.persistence.*;
 import lombok.Data;
 
@@ -12,6 +11,12 @@ import lombok.Data;
 @Entity(name = "eu.getmangos.entities.CharacterSkills")
 @Table(name = "character_skills")
 @IdClass(CharacterSkills.PrimaryKeys.class)
+@NamedQueries({
+    @NamedQuery(name = "CharacterSkills.findAll", query = "SELECT c FROM CharacterSkills c"),
+    @NamedQuery(name = "CharacterSkills.findByGuid", query = "SELECT c FROM CharacterSkills c WHERE c.characterSkillsPK.guid = :guid"),
+    @NamedQuery(name = "CharacterSkills.findBySkill", query = "SELECT c FROM CharacterSkills c WHERE c.characterSkillsPK.skill = :skill"),
+    @NamedQuery(name = "CharacterSkills.findByValue", query = "SELECT c FROM CharacterSkills c WHERE c.value = :value"),
+    @NamedQuery(name = "CharacterSkills.findByMax", query = "SELECT c FROM CharacterSkills c WHERE c.max = :max")})
 public class CharacterSkills {
   @Data
   public static class PrimaryKeys implements Serializable {

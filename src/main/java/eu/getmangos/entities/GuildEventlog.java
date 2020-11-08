@@ -1,7 +1,7 @@
 package eu.getmangos.entities;
 
 import java.io.Serializable;
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -12,6 +12,15 @@ import lombok.Data;
 @Entity(name = "eu.getmangos.entities.GuildEventlog")
 @Table(name = "guild_eventlog")
 @IdClass(GuildEventlog.PrimaryKeys.class)
+@NamedQueries({
+    @NamedQuery(name = "GuildEventlog.findAll", query = "SELECT g FROM GuildEventlog g"),
+    @NamedQuery(name = "GuildEventlog.findByGuildid", query = "SELECT g FROM GuildEventlog g WHERE g.guildEventlogPK.guildid = :guildid"),
+    @NamedQuery(name = "GuildEventlog.findByLogGuid", query = "SELECT g FROM GuildEventlog g WHERE g.guildEventlogPK.logGuid = :logGuid"),
+    @NamedQuery(name = "GuildEventlog.findByEventType", query = "SELECT g FROM GuildEventlog g WHERE g.eventType = :eventType"),
+    @NamedQuery(name = "GuildEventlog.findByPlayerGuid1", query = "SELECT g FROM GuildEventlog g WHERE g.playerGuid1 = :playerGuid1"),
+    @NamedQuery(name = "GuildEventlog.findByPlayerGuid2", query = "SELECT g FROM GuildEventlog g WHERE g.playerGuid2 = :playerGuid2"),
+    @NamedQuery(name = "GuildEventlog.findByNewRank", query = "SELECT g FROM GuildEventlog g WHERE g.newRank = :newRank"),
+    @NamedQuery(name = "GuildEventlog.findByTimeStamp", query = "SELECT g FROM GuildEventlog g WHERE g.timeStamp = :timeStamp")})
 public class GuildEventlog {
   @Data
   public static class PrimaryKeys implements Serializable {

@@ -1,7 +1,7 @@
 package eu.getmangos.entities;
 
 import java.io.Serializable;
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -12,6 +12,12 @@ import lombok.Data;
 @Entity(name = "eu.getmangos.entities.PetitionSign")
 @Table(name = "petition_sign")
 @IdClass(PetitionSign.PrimaryKeys.class)
+@NamedQueries({
+    @NamedQuery(name = "PetitionSign.findAll", query = "SELECT p FROM PetitionSign p"),
+    @NamedQuery(name = "PetitionSign.findByOwnerguid", query = "SELECT p FROM PetitionSign p WHERE p.ownerguid = :ownerguid"),
+    @NamedQuery(name = "PetitionSign.findByPetitionguid", query = "SELECT p FROM PetitionSign p WHERE p.petitionSignPK.petitionguid = :petitionguid"),
+    @NamedQuery(name = "PetitionSign.findByPlayerguid", query = "SELECT p FROM PetitionSign p WHERE p.petitionSignPK.playerguid = :playerguid"),
+    @NamedQuery(name = "PetitionSign.findByPlayerAccount", query = "SELECT p FROM PetitionSign p WHERE p.playerAccount = :playerAccount")})
 public class PetitionSign {
   @Data
   public static class PrimaryKeys implements Serializable {

@@ -1,6 +1,6 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -10,6 +10,11 @@ import lombok.Data;
 @Data
 @Entity(name = "eu.getmangos.entities.Petition")
 @Table(name = "petition")
+@NamedQueries({
+    @NamedQuery(name = "Petition.findAll", query = "SELECT p FROM Petition p"),
+    @NamedQuery(name = "Petition.findByOwnerguid", query = "SELECT p FROM Petition p WHERE p.ownerguid = :ownerguid"),
+    @NamedQuery(name = "Petition.findByPetitionguid", query = "SELECT p FROM Petition p WHERE p.petitionguid = :petitionguid"),
+    @NamedQuery(name = "Petition.findByName", query = "SELECT p FROM Petition p WHERE p.name = :name")})
 public class Petition {
 
   /**

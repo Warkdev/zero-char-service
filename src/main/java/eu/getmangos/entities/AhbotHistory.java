@@ -1,6 +1,5 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
 import javax.persistence.*;
 import lombok.Data;
 
@@ -8,9 +7,15 @@ import lombok.Data;
 @Entity(name = "eu.getmangos.entities.AhbotHistory")
 @Table(name = "ahbot_history")
 @NamedQueries({
-    @NamedQuery(name = "AHBotHistory.findAll", query = "SELECT h FROM AHBotHistory h"),
-    @NamedQuery(name = "AHBotHistory.findById", query = "SELECT h FROM AHBotHistory h where h.id = :id")
-})
+    @NamedQuery(name = "AhbotHistory.findAll", query = "SELECT a FROM AhbotHistory a"),
+    @NamedQuery(name = "AhbotHistory.findById", query = "SELECT a FROM AhbotHistory a WHERE a.id = :id"),
+    @NamedQuery(name = "AhbotHistory.findByBuytime", query = "SELECT a FROM AhbotHistory a WHERE a.buytime = :buytime"),
+    @NamedQuery(name = "AhbotHistory.findByItem", query = "SELECT a FROM AhbotHistory a WHERE a.item = :item"),
+    @NamedQuery(name = "AhbotHistory.findByBid", query = "SELECT a FROM AhbotHistory a WHERE a.bid = :bid"),
+    @NamedQuery(name = "AhbotHistory.findByBuyout", query = "SELECT a FROM AhbotHistory a WHERE a.buyout = :buyout"),
+    @NamedQuery(name = "AhbotHistory.findByWon", query = "SELECT a FROM AhbotHistory a WHERE a.won = :won"),
+    @NamedQuery(name = "AhbotHistory.findByCategory", query = "SELECT a FROM AhbotHistory a WHERE a.category = :category"),
+    @NamedQuery(name = "AhbotHistory.findByAuctionHouse", query = "SELECT a FROM AhbotHistory a WHERE a.auctionHouse = :auctionHouse")})
 public class AhbotHistory {
 
   @Id

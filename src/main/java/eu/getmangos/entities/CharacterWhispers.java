@@ -1,12 +1,20 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
 @Data
 @Entity(name = "eu.getmangos.entities.CharacterWhispers")
 @Table(name = "character_whispers")
+@NamedQueries({
+    @NamedQuery(name = "CharacterWhispers.findAll", query = "SELECT c FROM CharacterWhispers c"),
+    @NamedQuery(name = "CharacterWhispers.findById", query = "SELECT c FROM CharacterWhispers c WHERE c.id = :id"),
+    @NamedQuery(name = "CharacterWhispers.findByToGuid", query = "SELECT c FROM CharacterWhispers c WHERE c.toGuid = :toGuid"),
+    @NamedQuery(name = "CharacterWhispers.findByFromGuid", query = "SELECT c FROM CharacterWhispers c WHERE c.fromGuid = :fromGuid"),
+    @NamedQuery(name = "CharacterWhispers.findByMessage", query = "SELECT c FROM CharacterWhispers c WHERE c.message = :message"),
+    @NamedQuery(name = "CharacterWhispers.findByRegardingTicketId", query = "SELECT c FROM CharacterWhispers c WHERE c.regardingTicketId = :regardingTicketId"),
+    @NamedQuery(name = "CharacterWhispers.findBySentOn", query = "SELECT c FROM CharacterWhispers c WHERE c.sentOn = :sentOn")})
 public class CharacterWhispers {
 
   /**

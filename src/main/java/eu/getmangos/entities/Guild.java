@@ -1,6 +1,6 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -10,6 +10,19 @@ import lombok.Data;
 @Data
 @Entity(name = "eu.getmangos.entities.Guild")
 @Table(name = "guild")
+@NamedQueries({
+    @NamedQuery(name = "Guild.findAll", query = "SELECT g FROM Guild g"),
+    @NamedQuery(name = "Guild.findByGuildid", query = "SELECT g FROM Guild g WHERE g.guildid = :guildid"),
+    @NamedQuery(name = "Guild.findByName", query = "SELECT g FROM Guild g WHERE g.name = :name"),
+    @NamedQuery(name = "Guild.findByLeaderguid", query = "SELECT g FROM Guild g WHERE g.leaderguid = :leaderguid"),
+    @NamedQuery(name = "Guild.findByEmblemStyle", query = "SELECT g FROM Guild g WHERE g.emblemStyle = :emblemStyle"),
+    @NamedQuery(name = "Guild.findByEmblemColor", query = "SELECT g FROM Guild g WHERE g.emblemColor = :emblemColor"),
+    @NamedQuery(name = "Guild.findByBorderStyle", query = "SELECT g FROM Guild g WHERE g.borderStyle = :borderStyle"),
+    @NamedQuery(name = "Guild.findByBorderColor", query = "SELECT g FROM Guild g WHERE g.borderColor = :borderColor"),
+    @NamedQuery(name = "Guild.findByBackgroundColor", query = "SELECT g FROM Guild g WHERE g.backgroundColor = :backgroundColor"),
+    @NamedQuery(name = "Guild.findByInfo", query = "SELECT g FROM Guild g WHERE g.info = :info"),
+    @NamedQuery(name = "Guild.findByMotd", query = "SELECT g FROM Guild g WHERE g.motd = :motd"),
+    @NamedQuery(name = "Guild.findByCreatedate", query = "SELECT g FROM Guild g WHERE g.createdate = :createdate")})
 public class Guild {
 
   /**

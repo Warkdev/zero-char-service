@@ -1,7 +1,7 @@
 package eu.getmangos.entities;
 
 import java.io.Serializable;
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -12,6 +12,12 @@ import lombok.Data;
 @Entity(name = "eu.getmangos.entities.GuildRank")
 @Table(name = "guild_rank")
 @IdClass(GuildRank.PrimaryKeys.class)
+@NamedQueries({
+    @NamedQuery(name = "GuildRank.findAll", query = "SELECT g FROM GuildRank g"),
+    @NamedQuery(name = "GuildRank.findByGuildid", query = "SELECT g FROM GuildRank g WHERE g.guildRankPK.guildid = :guildid"),
+    @NamedQuery(name = "GuildRank.findByRid", query = "SELECT g FROM GuildRank g WHERE g.guildRankPK.rid = :rid"),
+    @NamedQuery(name = "GuildRank.findByRname", query = "SELECT g FROM GuildRank g WHERE g.rname = :rname"),
+    @NamedQuery(name = "GuildRank.findByRights", query = "SELECT g FROM GuildRank g WHERE g.rights = :rights")})
 public class GuildRank {
   @Data
   public static class PrimaryKeys implements Serializable {

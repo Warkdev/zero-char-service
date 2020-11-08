@@ -1,6 +1,6 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -10,6 +10,21 @@ import lombok.Data;
 @Data
 @Entity(name = "eu.getmangos.entities.Mail")
 @Table(name = "mail")
+@NamedQueries({
+    @NamedQuery(name = "Mail.findAll", query = "SELECT m FROM Mail m"),
+    @NamedQuery(name = "Mail.findById", query = "SELECT m FROM Mail m WHERE m.id = :id"),
+    @NamedQuery(name = "Mail.findByMessageType", query = "SELECT m FROM Mail m WHERE m.messageType = :messageType"),
+    @NamedQuery(name = "Mail.findByStationery", query = "SELECT m FROM Mail m WHERE m.stationery = :stationery"),
+    @NamedQuery(name = "Mail.findByMailTemplateId", query = "SELECT m FROM Mail m WHERE m.mailTemplateId = :mailTemplateId"),
+    @NamedQuery(name = "Mail.findBySender", query = "SELECT m FROM Mail m WHERE m.sender = :sender"),
+    @NamedQuery(name = "Mail.findByReceiver", query = "SELECT m FROM Mail m WHERE m.receiver = :receiver"),
+    @NamedQuery(name = "Mail.findByItemTextId", query = "SELECT m FROM Mail m WHERE m.itemTextId = :itemTextId"),
+    @NamedQuery(name = "Mail.findByHasItems", query = "SELECT m FROM Mail m WHERE m.hasItems = :hasItems"),
+    @NamedQuery(name = "Mail.findByExpireTime", query = "SELECT m FROM Mail m WHERE m.expireTime = :expireTime"),
+    @NamedQuery(name = "Mail.findByDeliverTime", query = "SELECT m FROM Mail m WHERE m.deliverTime = :deliverTime"),
+    @NamedQuery(name = "Mail.findByMoney", query = "SELECT m FROM Mail m WHERE m.money = :money"),
+    @NamedQuery(name = "Mail.findByCod", query = "SELECT m FROM Mail m WHERE m.cod = :cod"),
+    @NamedQuery(name = "Mail.findByChecked", query = "SELECT m FROM Mail m WHERE m.checked = :checked")})
 public class Mail {
 
   /**

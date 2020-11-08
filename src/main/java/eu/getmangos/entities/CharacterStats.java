@@ -1,12 +1,42 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
 @Data
 @Entity(name = "eu.getmangos.entities.CharacterStats")
 @Table(name = "character_stats")
+@NamedQueries({
+    @NamedQuery(name = "CharacterStats.findAll", query = "SELECT c FROM CharacterStats c"),
+    @NamedQuery(name = "CharacterStats.findByGuid", query = "SELECT c FROM CharacterStats c WHERE c.guid = :guid"),
+    @NamedQuery(name = "CharacterStats.findByMaxhealth", query = "SELECT c FROM CharacterStats c WHERE c.maxhealth = :maxhealth"),
+    @NamedQuery(name = "CharacterStats.findByMaxpower1", query = "SELECT c FROM CharacterStats c WHERE c.maxpower1 = :maxpower1"),
+    @NamedQuery(name = "CharacterStats.findByMaxpower2", query = "SELECT c FROM CharacterStats c WHERE c.maxpower2 = :maxpower2"),
+    @NamedQuery(name = "CharacterStats.findByMaxpower3", query = "SELECT c FROM CharacterStats c WHERE c.maxpower3 = :maxpower3"),
+    @NamedQuery(name = "CharacterStats.findByMaxpower4", query = "SELECT c FROM CharacterStats c WHERE c.maxpower4 = :maxpower4"),
+    @NamedQuery(name = "CharacterStats.findByMaxpower5", query = "SELECT c FROM CharacterStats c WHERE c.maxpower5 = :maxpower5"),
+    @NamedQuery(name = "CharacterStats.findByMaxpower6", query = "SELECT c FROM CharacterStats c WHERE c.maxpower6 = :maxpower6"),
+    @NamedQuery(name = "CharacterStats.findByMaxpower7", query = "SELECT c FROM CharacterStats c WHERE c.maxpower7 = :maxpower7"),
+    @NamedQuery(name = "CharacterStats.findByStrength", query = "SELECT c FROM CharacterStats c WHERE c.strength = :strength"),
+    @NamedQuery(name = "CharacterStats.findByAgility", query = "SELECT c FROM CharacterStats c WHERE c.agility = :agility"),
+    @NamedQuery(name = "CharacterStats.findByStamina", query = "SELECT c FROM CharacterStats c WHERE c.stamina = :stamina"),
+    @NamedQuery(name = "CharacterStats.findByIntellect", query = "SELECT c FROM CharacterStats c WHERE c.intellect = :intellect"),
+    @NamedQuery(name = "CharacterStats.findBySpirit", query = "SELECT c FROM CharacterStats c WHERE c.spirit = :spirit"),
+    @NamedQuery(name = "CharacterStats.findByArmor", query = "SELECT c FROM CharacterStats c WHERE c.armor = :armor"),
+    @NamedQuery(name = "CharacterStats.findByResHoly", query = "SELECT c FROM CharacterStats c WHERE c.resHoly = :resHoly"),
+    @NamedQuery(name = "CharacterStats.findByResFire", query = "SELECT c FROM CharacterStats c WHERE c.resFire = :resFire"),
+    @NamedQuery(name = "CharacterStats.findByResNature", query = "SELECT c FROM CharacterStats c WHERE c.resNature = :resNature"),
+    @NamedQuery(name = "CharacterStats.findByResFrost", query = "SELECT c FROM CharacterStats c WHERE c.resFrost = :resFrost"),
+    @NamedQuery(name = "CharacterStats.findByResShadow", query = "SELECT c FROM CharacterStats c WHERE c.resShadow = :resShadow"),
+    @NamedQuery(name = "CharacterStats.findByResArcane", query = "SELECT c FROM CharacterStats c WHERE c.resArcane = :resArcane"),
+    @NamedQuery(name = "CharacterStats.findByBlockPct", query = "SELECT c FROM CharacterStats c WHERE c.blockPct = :blockPct"),
+    @NamedQuery(name = "CharacterStats.findByDodgePct", query = "SELECT c FROM CharacterStats c WHERE c.dodgePct = :dodgePct"),
+    @NamedQuery(name = "CharacterStats.findByParryPct", query = "SELECT c FROM CharacterStats c WHERE c.parryPct = :parryPct"),
+    @NamedQuery(name = "CharacterStats.findByCritPct", query = "SELECT c FROM CharacterStats c WHERE c.critPct = :critPct"),
+    @NamedQuery(name = "CharacterStats.findByRangedCritPct", query = "SELECT c FROM CharacterStats c WHERE c.rangedCritPct = :rangedCritPct"),
+    @NamedQuery(name = "CharacterStats.findByAttackPower", query = "SELECT c FROM CharacterStats c WHERE c.attackPower = :attackPower"),
+    @NamedQuery(name = "CharacterStats.findByRangedAttackPower", query = "SELECT c FROM CharacterStats c WHERE c.rangedAttackPower = :rangedAttackPower")})
 public class CharacterStats {
 
   /**

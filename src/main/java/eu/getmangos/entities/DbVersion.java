@@ -1,7 +1,7 @@
 package eu.getmangos.entities;
 
 import java.io.Serializable;
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -12,6 +12,13 @@ import lombok.Data;
 @Entity(name = "eu.getmangos.entities.DbVersion")
 @Table(name = "db_version")
 @IdClass(DbVersion.PrimaryKeys.class)
+@NamedQueries({
+    @NamedQuery(name = "DbVersion.findAll", query = "SELECT d FROM DbVersion d"),
+    @NamedQuery(name = "DbVersion.findByVersion", query = "SELECT d FROM DbVersion d WHERE d.dbVersionPK.version = :version"),
+    @NamedQuery(name = "DbVersion.findByStructure", query = "SELECT d FROM DbVersion d WHERE d.dbVersionPK.structure = :structure"),
+    @NamedQuery(name = "DbVersion.findByContent", query = "SELECT d FROM DbVersion d WHERE d.dbVersionPK.content = :content"),
+    @NamedQuery(name = "DbVersion.findByDescription", query = "SELECT d FROM DbVersion d WHERE d.description = :description"),
+    @NamedQuery(name = "DbVersion.findByComment", query = "SELECT d FROM DbVersion d WHERE d.comment = :comment")})
 public class DbVersion {
   @Data
   public static class PrimaryKeys implements Serializable {

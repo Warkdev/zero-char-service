@@ -1,6 +1,5 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
 import javax.persistence.*;
 import lombok.Data;
 
@@ -8,9 +7,11 @@ import lombok.Data;
 @Entity(name = "eu.getmangos.entities.AhbotPrice")
 @Table(name = "ahbot_price")
 @NamedQueries({
-    @NamedQuery(name = "AHBotPrice.findAll", query = "SELECT p FROM AHBotPrice p"),
-    @NamedQuery(name = "AHBotPrice.findById", query = "SELECT p FROM AHBotPrice p where p.id = :id")
-})
+    @NamedQuery(name = "AhbotPrice.findAll", query = "SELECT a FROM AhbotPrice a"),
+    @NamedQuery(name = "AhbotPrice.findById", query = "SELECT a FROM AhbotPrice a WHERE a.id = :id"),
+    @NamedQuery(name = "AhbotPrice.findByItem", query = "SELECT a FROM AhbotPrice a WHERE a.item = :item"),
+    @NamedQuery(name = "AhbotPrice.findByPrice", query = "SELECT a FROM AhbotPrice a WHERE a.price = :price"),
+    @NamedQuery(name = "AhbotPrice.findByAuctionHouse", query = "SELECT a FROM AhbotPrice a WHERE a.auctionHouse = :auctionHouse")})
 public class AhbotPrice {
 
   @Id

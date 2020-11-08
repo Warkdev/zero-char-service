@@ -1,12 +1,17 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
 @Data
 @Entity(name = "eu.getmangos.entities.Instance")
 @Table(name = "instance")
+@NamedQueries({
+    @NamedQuery(name = "Instance.findAll", query = "SELECT i FROM Instance i"),
+    @NamedQuery(name = "Instance.findById", query = "SELECT i FROM Instance i WHERE i.id = :id"),
+    @NamedQuery(name = "Instance.findByMap", query = "SELECT i FROM Instance i WHERE i.map = :map"),
+    @NamedQuery(name = "Instance.findByResettime", query = "SELECT i FROM Instance i WHERE i.resettime = :resettime")})
 public class Instance {
 
   /**

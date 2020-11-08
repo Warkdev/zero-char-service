@@ -1,6 +1,6 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -10,6 +10,9 @@ import lombok.Data;
 @Data
 @Entity(name = "eu.getmangos.entities.GameEventStatus")
 @Table(name = "game_event_status")
+@NamedQueries({
+    @NamedQuery(name = "GameEventStatus.findAll", query = "SELECT g FROM GameEventStatus g"),
+    @NamedQuery(name = "GameEventStatus.findByEvent", query = "SELECT g FROM GameEventStatus g WHERE g.event = :event")})
 public class GameEventStatus {
 
   /**

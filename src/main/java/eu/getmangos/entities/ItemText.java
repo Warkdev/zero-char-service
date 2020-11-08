@@ -1,6 +1,6 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -10,6 +10,9 @@ import lombok.Data;
 @Data
 @Entity(name = "eu.getmangos.entities.ItemText")
 @Table(name = "item_text")
+@NamedQueries({
+    @NamedQuery(name = "ItemText.findAll", query = "SELECT i FROM ItemText i"),
+    @NamedQuery(name = "ItemText.findById", query = "SELECT i FROM ItemText i WHERE i.id = :id")})
 public class ItemText {
 
   /**

@@ -1,6 +1,5 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
 import javax.persistence.*;
 import lombok.Data;
 
@@ -10,6 +9,13 @@ import lombok.Data;
 @Data
 @Entity(name = "eu.getmangos.entities.CharacterInventory")
 @Table(name = "character_inventory")
+@NamedQueries({
+    @NamedQuery(name = "CharacterInventory.findAll", query = "SELECT c FROM CharacterInventory c"),
+    @NamedQuery(name = "CharacterInventory.findByGuid", query = "SELECT c FROM CharacterInventory c WHERE c.guid = :guid"),
+    @NamedQuery(name = "CharacterInventory.findByBag", query = "SELECT c FROM CharacterInventory c WHERE c.bag = :bag"),
+    @NamedQuery(name = "CharacterInventory.findBySlot", query = "SELECT c FROM CharacterInventory c WHERE c.slot = :slot"),
+    @NamedQuery(name = "CharacterInventory.findByItem", query = "SELECT c FROM CharacterInventory c WHERE c.item = :item"),
+    @NamedQuery(name = "CharacterInventory.findByItemTemplate", query = "SELECT c FROM CharacterInventory c WHERE c.itemTemplate = :itemTemplate")})
 public class CharacterInventory {
 
   /**

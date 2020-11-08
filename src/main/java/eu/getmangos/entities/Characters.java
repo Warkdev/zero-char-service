@@ -1,6 +1,6 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -10,6 +10,62 @@ import lombok.Data;
 @Data
 @Entity(name = "eu.getmangos.entities.Characters")
 @Table(name = "characters")
+@NamedQueries({
+    @NamedQuery(name = "Characters.findAll", query = "SELECT c FROM Characters c"),
+    @NamedQuery(name = "Characters.findByGuid", query = "SELECT c FROM Characters c WHERE c.guid = :guid"),
+    @NamedQuery(name = "Characters.findByAccount", query = "SELECT c FROM Characters c WHERE c.account = :account"),
+    @NamedQuery(name = "Characters.findByName", query = "SELECT c FROM Characters c WHERE c.name = :name"),
+    @NamedQuery(name = "Characters.findByRace", query = "SELECT c FROM Characters c WHERE c.race = :race"),
+    @NamedQuery(name = "Characters.findByClass1", query = "SELECT c FROM Characters c WHERE c.class1 = :class1"),
+    @NamedQuery(name = "Characters.findByGender", query = "SELECT c FROM Characters c WHERE c.gender = :gender"),
+    @NamedQuery(name = "Characters.findByLevel", query = "SELECT c FROM Characters c WHERE c.level = :level"),
+    @NamedQuery(name = "Characters.findByXp", query = "SELECT c FROM Characters c WHERE c.xp = :xp"),
+    @NamedQuery(name = "Characters.findByMoney", query = "SELECT c FROM Characters c WHERE c.money = :money"),
+    @NamedQuery(name = "Characters.findByPlayerBytes", query = "SELECT c FROM Characters c WHERE c.playerBytes = :playerBytes"),
+    @NamedQuery(name = "Characters.findByPlayerBytes2", query = "SELECT c FROM Characters c WHERE c.playerBytes2 = :playerBytes2"),
+    @NamedQuery(name = "Characters.findByPlayerFlags", query = "SELECT c FROM Characters c WHERE c.playerFlags = :playerFlags"),
+    @NamedQuery(name = "Characters.findByPositionX", query = "SELECT c FROM Characters c WHERE c.positionX = :positionX"),
+    @NamedQuery(name = "Characters.findByPositionY", query = "SELECT c FROM Characters c WHERE c.positionY = :positionY"),
+    @NamedQuery(name = "Characters.findByPositionZ", query = "SELECT c FROM Characters c WHERE c.positionZ = :positionZ"),
+    @NamedQuery(name = "Characters.findByMap", query = "SELECT c FROM Characters c WHERE c.map = :map"),
+    @NamedQuery(name = "Characters.findByOrientation", query = "SELECT c FROM Characters c WHERE c.orientation = :orientation"),
+    @NamedQuery(name = "Characters.findByOnline", query = "SELECT c FROM Characters c WHERE c.online = :online"),
+    @NamedQuery(name = "Characters.findByCinematic", query = "SELECT c FROM Characters c WHERE c.cinematic = :cinematic"),
+    @NamedQuery(name = "Characters.findByTotaltime", query = "SELECT c FROM Characters c WHERE c.totaltime = :totaltime"),
+    @NamedQuery(name = "Characters.findByLeveltime", query = "SELECT c FROM Characters c WHERE c.leveltime = :leveltime"),
+    @NamedQuery(name = "Characters.findByLogoutTime", query = "SELECT c FROM Characters c WHERE c.logoutTime = :logoutTime"),
+    @NamedQuery(name = "Characters.findByIsLogoutResting", query = "SELECT c FROM Characters c WHERE c.isLogoutResting = :isLogoutResting"),
+    @NamedQuery(name = "Characters.findByRestBonus", query = "SELECT c FROM Characters c WHERE c.restBonus = :restBonus"),
+    @NamedQuery(name = "Characters.findByResettalentsCost", query = "SELECT c FROM Characters c WHERE c.resettalentsCost = :resettalentsCost"),
+    @NamedQuery(name = "Characters.findByResettalentsTime", query = "SELECT c FROM Characters c WHERE c.resettalentsTime = :resettalentsTime"),
+    @NamedQuery(name = "Characters.findByTransX", query = "SELECT c FROM Characters c WHERE c.transX = :transX"),
+    @NamedQuery(name = "Characters.findByTransY", query = "SELECT c FROM Characters c WHERE c.transY = :transY"),
+    @NamedQuery(name = "Characters.findByTransZ", query = "SELECT c FROM Characters c WHERE c.transZ = :transZ"),
+    @NamedQuery(name = "Characters.findByTransO", query = "SELECT c FROM Characters c WHERE c.transO = :transO"),
+    @NamedQuery(name = "Characters.findByTransguid", query = "SELECT c FROM Characters c WHERE c.transguid = :transguid"),
+    @NamedQuery(name = "Characters.findByExtraFlags", query = "SELECT c FROM Characters c WHERE c.extraFlags = :extraFlags"),
+    @NamedQuery(name = "Characters.findByStableSlots", query = "SELECT c FROM Characters c WHERE c.stableSlots = :stableSlots"),
+    @NamedQuery(name = "Characters.findByAtLogin", query = "SELECT c FROM Characters c WHERE c.atLogin = :atLogin"),
+    @NamedQuery(name = "Characters.findByZone", query = "SELECT c FROM Characters c WHERE c.zone = :zone"),
+    @NamedQuery(name = "Characters.findByDeathExpireTime", query = "SELECT c FROM Characters c WHERE c.deathExpireTime = :deathExpireTime"),
+    @NamedQuery(name = "Characters.findByHonorHighestRank", query = "SELECT c FROM Characters c WHERE c.honorHighestRank = :honorHighestRank"),
+    @NamedQuery(name = "Characters.findByHonorStanding", query = "SELECT c FROM Characters c WHERE c.honorStanding = :honorStanding"),
+    @NamedQuery(name = "Characters.findByStoredHonorRating", query = "SELECT c FROM Characters c WHERE c.storedHonorRating = :storedHonorRating"),
+    @NamedQuery(name = "Characters.findByStoredDishonorableKills", query = "SELECT c FROM Characters c WHERE c.storedDishonorableKills = :storedDishonorableKills"),
+    @NamedQuery(name = "Characters.findByStoredHonorableKills", query = "SELECT c FROM Characters c WHERE c.storedHonorableKills = :storedHonorableKills"),
+    @NamedQuery(name = "Characters.findByWatchedFaction", query = "SELECT c FROM Characters c WHERE c.watchedFaction = :watchedFaction"),
+    @NamedQuery(name = "Characters.findByDrunk", query = "SELECT c FROM Characters c WHERE c.drunk = :drunk"),
+    @NamedQuery(name = "Characters.findByHealth", query = "SELECT c FROM Characters c WHERE c.health = :health"),
+    @NamedQuery(name = "Characters.findByPower1", query = "SELECT c FROM Characters c WHERE c.power1 = :power1"),
+    @NamedQuery(name = "Characters.findByPower2", query = "SELECT c FROM Characters c WHERE c.power2 = :power2"),
+    @NamedQuery(name = "Characters.findByPower3", query = "SELECT c FROM Characters c WHERE c.power3 = :power3"),
+    @NamedQuery(name = "Characters.findByPower4", query = "SELECT c FROM Characters c WHERE c.power4 = :power4"),
+    @NamedQuery(name = "Characters.findByPower5", query = "SELECT c FROM Characters c WHERE c.power5 = :power5"),
+    @NamedQuery(name = "Characters.findByAmmoId", query = "SELECT c FROM Characters c WHERE c.ammoId = :ammoId"),
+    @NamedQuery(name = "Characters.findByActionBars", query = "SELECT c FROM Characters c WHERE c.actionBars = :actionBars"),
+    @NamedQuery(name = "Characters.findByDeleteInfosAccount", query = "SELECT c FROM Characters c WHERE c.deleteInfosAccount = :deleteInfosAccount"),
+    @NamedQuery(name = "Characters.findByDeleteInfosName", query = "SELECT c FROM Characters c WHERE c.deleteInfosName = :deleteInfosName"),
+    @NamedQuery(name = "Characters.findByDeleteDate", query = "SELECT c FROM Characters c WHERE c.deleteDate = :deleteDate")})
 public class Characters {
 
   /**

@@ -1,7 +1,6 @@
 package eu.getmangos.entities;
 
 import java.io.Serializable;
-import java.sql.*;
 import javax.persistence.*;
 import lombok.Data;
 
@@ -12,6 +11,15 @@ import lombok.Data;
 @Entity(name = "eu.getmangos.entities.CharacterHonorCp")
 @Table(name = "character_honor_cp")
 @IdClass(CharacterHonorCp.PrimaryKeys.class)
+@NamedQueries({
+    @NamedQuery(name = "CharacterHonorCp.findAll", query = "SELECT c FROM CharacterHonorCp c"),
+    @NamedQuery(name = "CharacterHonorCp.findByGuid", query = "SELECT c FROM CharacterHonorCp c WHERE c.characterHonorCpPK.guid = :guid"),
+    @NamedQuery(name = "CharacterHonorCp.findByVictimType", query = "SELECT c FROM CharacterHonorCp c WHERE c.victimType = :victimType"),
+    @NamedQuery(name = "CharacterHonorCp.findByVictim", query = "SELECT c FROM CharacterHonorCp c WHERE c.characterHonorCpPK.victim = :victim"),
+    @NamedQuery(name = "CharacterHonorCp.findByHonor", query = "SELECT c FROM CharacterHonorCp c WHERE c.honor = :honor"),
+    @NamedQuery(name = "CharacterHonorCp.findByDate", query = "SELECT c FROM CharacterHonorCp c WHERE c.characterHonorCpPK.date = :date"),
+    @NamedQuery(name = "CharacterHonorCp.findByType", query = "SELECT c FROM CharacterHonorCp c WHERE c.type = :type"),
+    @NamedQuery(name = "CharacterHonorCp.findByUsed", query = "SELECT c FROM CharacterHonorCp c WHERE c.used = :used")})
 public class CharacterHonorCp {
   @Data
   public static class PrimaryKeys implements Serializable {

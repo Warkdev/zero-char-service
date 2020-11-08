@@ -1,7 +1,7 @@
 package eu.getmangos.entities;
 
 import java.io.Serializable;
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -12,6 +12,22 @@ import lombok.Data;
 @Entity(name = "eu.getmangos.entities.CharacterQueststatus")
 @Table(name = "character_queststatus")
 @IdClass(CharacterQueststatus.PrimaryKeys.class)
+@NamedQueries({
+    @NamedQuery(name = "CharacterQueststatus.findAll", query = "SELECT c FROM CharacterQueststatus c"),
+    @NamedQuery(name = "CharacterQueststatus.findByGuid", query = "SELECT c FROM CharacterQueststatus c WHERE c.characterQueststatusPK.guid = :guid"),
+    @NamedQuery(name = "CharacterQueststatus.findByQuest", query = "SELECT c FROM CharacterQueststatus c WHERE c.characterQueststatusPK.quest = :quest"),
+    @NamedQuery(name = "CharacterQueststatus.findByStatus", query = "SELECT c FROM CharacterQueststatus c WHERE c.status = :status"),
+    @NamedQuery(name = "CharacterQueststatus.findByRewarded", query = "SELECT c FROM CharacterQueststatus c WHERE c.rewarded = :rewarded"),
+    @NamedQuery(name = "CharacterQueststatus.findByExplored", query = "SELECT c FROM CharacterQueststatus c WHERE c.explored = :explored"),
+    @NamedQuery(name = "CharacterQueststatus.findByTimer", query = "SELECT c FROM CharacterQueststatus c WHERE c.timer = :timer"),
+    @NamedQuery(name = "CharacterQueststatus.findByMobcount1", query = "SELECT c FROM CharacterQueststatus c WHERE c.mobcount1 = :mobcount1"),
+    @NamedQuery(name = "CharacterQueststatus.findByMobcount2", query = "SELECT c FROM CharacterQueststatus c WHERE c.mobcount2 = :mobcount2"),
+    @NamedQuery(name = "CharacterQueststatus.findByMobcount3", query = "SELECT c FROM CharacterQueststatus c WHERE c.mobcount3 = :mobcount3"),
+    @NamedQuery(name = "CharacterQueststatus.findByMobcount4", query = "SELECT c FROM CharacterQueststatus c WHERE c.mobcount4 = :mobcount4"),
+    @NamedQuery(name = "CharacterQueststatus.findByItemcount1", query = "SELECT c FROM CharacterQueststatus c WHERE c.itemcount1 = :itemcount1"),
+    @NamedQuery(name = "CharacterQueststatus.findByItemcount2", query = "SELECT c FROM CharacterQueststatus c WHERE c.itemcount2 = :itemcount2"),
+    @NamedQuery(name = "CharacterQueststatus.findByItemcount3", query = "SELECT c FROM CharacterQueststatus c WHERE c.itemcount3 = :itemcount3"),
+    @NamedQuery(name = "CharacterQueststatus.findByItemcount4", query = "SELECT c FROM CharacterQueststatus c WHERE c.itemcount4 = :itemcount4")})
 public class CharacterQueststatus {
   @Data
   public static class PrimaryKeys implements Serializable {

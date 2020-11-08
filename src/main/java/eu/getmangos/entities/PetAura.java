@@ -1,7 +1,7 @@
 package eu.getmangos.entities;
 
 import java.io.Serializable;
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -12,6 +12,23 @@ import lombok.Data;
 @Entity(name = "eu.getmangos.entities.PetAura")
 @Table(name = "pet_aura")
 @IdClass(PetAura.PrimaryKeys.class)
+@NamedQueries({
+    @NamedQuery(name = "PetAura.findAll", query = "SELECT p FROM PetAura p"),
+    @NamedQuery(name = "PetAura.findByGuid", query = "SELECT p FROM PetAura p WHERE p.petAuraPK.guid = :guid"),
+    @NamedQuery(name = "PetAura.findByCasterGuid", query = "SELECT p FROM PetAura p WHERE p.petAuraPK.casterGuid = :casterGuid"),
+    @NamedQuery(name = "PetAura.findByItemGuid", query = "SELECT p FROM PetAura p WHERE p.petAuraPK.itemGuid = :itemGuid"),
+    @NamedQuery(name = "PetAura.findBySpell", query = "SELECT p FROM PetAura p WHERE p.petAuraPK.spell = :spell"),
+    @NamedQuery(name = "PetAura.findByStackcount", query = "SELECT p FROM PetAura p WHERE p.stackcount = :stackcount"),
+    @NamedQuery(name = "PetAura.findByRemaincharges", query = "SELECT p FROM PetAura p WHERE p.remaincharges = :remaincharges"),
+    @NamedQuery(name = "PetAura.findByBasepoints0", query = "SELECT p FROM PetAura p WHERE p.basepoints0 = :basepoints0"),
+    @NamedQuery(name = "PetAura.findByBasepoints1", query = "SELECT p FROM PetAura p WHERE p.basepoints1 = :basepoints1"),
+    @NamedQuery(name = "PetAura.findByBasepoints2", query = "SELECT p FROM PetAura p WHERE p.basepoints2 = :basepoints2"),
+    @NamedQuery(name = "PetAura.findByPeriodictime0", query = "SELECT p FROM PetAura p WHERE p.periodictime0 = :periodictime0"),
+    @NamedQuery(name = "PetAura.findByPeriodictime1", query = "SELECT p FROM PetAura p WHERE p.periodictime1 = :periodictime1"),
+    @NamedQuery(name = "PetAura.findByPeriodictime2", query = "SELECT p FROM PetAura p WHERE p.periodictime2 = :periodictime2"),
+    @NamedQuery(name = "PetAura.findByMaxduration", query = "SELECT p FROM PetAura p WHERE p.maxduration = :maxduration"),
+    @NamedQuery(name = "PetAura.findByRemaintime", query = "SELECT p FROM PetAura p WHERE p.remaintime = :remaintime"),
+    @NamedQuery(name = "PetAura.findByEffIndexMask", query = "SELECT p FROM PetAura p WHERE p.effIndexMask = :effIndexMask")})
 public class PetAura {
   @Data
   public static class PrimaryKeys implements Serializable {

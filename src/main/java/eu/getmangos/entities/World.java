@@ -1,12 +1,15 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
 @Data
 @Entity(name = "eu.getmangos.entities.World")
 @Table(name = "world")
+@NamedQueries({
+    @NamedQuery(name = "World.findAll", query = "SELECT w FROM World w"),
+    @NamedQuery(name = "World.findByMap", query = "SELECT w FROM World w WHERE w.map = :map")})
 public class World {
 
   /**

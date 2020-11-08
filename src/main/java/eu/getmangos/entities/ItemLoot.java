@@ -1,7 +1,7 @@
 package eu.getmangos.entities;
 
 import java.io.Serializable;
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -12,6 +12,13 @@ import lombok.Data;
 @Entity(name = "eu.getmangos.entities.ItemLoot")
 @Table(name = "item_loot")
 @IdClass(ItemLoot.PrimaryKeys.class)
+@NamedQueries({
+    @NamedQuery(name = "ItemLoot.findAll", query = "SELECT i FROM ItemLoot i"),
+    @NamedQuery(name = "ItemLoot.findByGuid", query = "SELECT i FROM ItemLoot i WHERE i.itemLootPK.guid = :guid"),
+    @NamedQuery(name = "ItemLoot.findByOwnerGuid", query = "SELECT i FROM ItemLoot i WHERE i.ownerGuid = :ownerGuid"),
+    @NamedQuery(name = "ItemLoot.findByItemid", query = "SELECT i FROM ItemLoot i WHERE i.itemLootPK.itemid = :itemid"),
+    @NamedQuery(name = "ItemLoot.findByAmount", query = "SELECT i FROM ItemLoot i WHERE i.amount = :amount"),
+    @NamedQuery(name = "ItemLoot.findByProperty", query = "SELECT i FROM ItemLoot i WHERE i.property = :property")})
 public class ItemLoot {
   @Data
   public static class PrimaryKeys implements Serializable {

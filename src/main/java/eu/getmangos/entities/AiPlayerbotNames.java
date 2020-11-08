@@ -1,6 +1,6 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -11,9 +11,15 @@ import lombok.Data;
 @Entity(name = "eu.getmangos.entities.AiPlayerbotNames")
 @Table(name = "ai_playerbot_names")
 @NamedQueries({
-    @NamedQuery(name = "AIPlayerBotNames.findAll", query = "SELECT ai FROM AIPlayerBotNames ai"),
-    @NamedQuery(name = "AIPlayerBotNames.findById", query = "SELECT ai FROM AIPlayerBotNames ai where ai.name_id = :id")
-})
+    @NamedQuery(name = "AiPlayerbotNames.findAll", query = "SELECT a FROM AiPlayerbotNames a"),
+    @NamedQuery(name = "AiPlayerbotNames.findByNameId", query = "SELECT a FROM AiPlayerbotNames a WHERE a.nameId = :nameId"),
+    @NamedQuery(name = "AiPlayerbotNames.findByName", query = "SELECT a FROM AiPlayerbotNames a WHERE a.name = :name"),
+    @NamedQuery(name = "AiPlayerbotNames.findByGender", query = "SELECT a FROM AiPlayerbotNames a WHERE a.gender = :gender"),
+    @NamedQuery(name = "AiPlayerbotNames.findByRace", query = "SELECT a FROM AiPlayerbotNames a WHERE a.race = :race"),
+    @NamedQuery(name = "AiPlayerbotNames.findByClass1", query = "SELECT a FROM AiPlayerbotNames a WHERE a.class1 = :class1"),
+    @NamedQuery(name = "AiPlayerbotNames.findByPurpose", query = "SELECT a FROM AiPlayerbotNames a WHERE a.purpose = :purpose"),
+    @NamedQuery(name = "AiPlayerbotNames.findByPriority", query = "SELECT a FROM AiPlayerbotNames a WHERE a.priority = :priority"),
+    @NamedQuery(name = "AiPlayerbotNames.findByInUse", query = "SELECT a FROM AiPlayerbotNames a WHERE a.inUse = :inUse")})
 public class AiPlayerbotNames {
 
   @Id

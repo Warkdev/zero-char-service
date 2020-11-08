@@ -1,7 +1,6 @@
 package eu.getmangos.entities;
 
 import java.io.Serializable;
-import java.sql.*;
 import javax.persistence.*;
 import lombok.Data;
 
@@ -14,8 +13,21 @@ import lombok.Data;
 @IdClass(CharacterAura.PrimaryKeys.class)
 @NamedQueries({
     @NamedQuery(name = "CharacterAura.findAll", query = "SELECT c FROM CharacterAura c"),
-    @NamedQuery(name = "CharacterAura.findById", query = "SELECT c FROM CharacterAura c where c.id = :id")
-})
+    @NamedQuery(name = "CharacterAura.findByGuid", query = "SELECT c FROM CharacterAura c WHERE c.characterAuraPK.guid = :guid"),
+    @NamedQuery(name = "CharacterAura.findByCasterGuid", query = "SELECT c FROM CharacterAura c WHERE c.characterAuraPK.casterGuid = :casterGuid"),
+    @NamedQuery(name = "CharacterAura.findByItemGuid", query = "SELECT c FROM CharacterAura c WHERE c.characterAuraPK.itemGuid = :itemGuid"),
+    @NamedQuery(name = "CharacterAura.findBySpell", query = "SELECT c FROM CharacterAura c WHERE c.characterAuraPK.spell = :spell"),
+    @NamedQuery(name = "CharacterAura.findByStackcount", query = "SELECT c FROM CharacterAura c WHERE c.stackcount = :stackcount"),
+    @NamedQuery(name = "CharacterAura.findByRemaincharges", query = "SELECT c FROM CharacterAura c WHERE c.remaincharges = :remaincharges"),
+    @NamedQuery(name = "CharacterAura.findByBasepoints0", query = "SELECT c FROM CharacterAura c WHERE c.basepoints0 = :basepoints0"),
+    @NamedQuery(name = "CharacterAura.findByBasepoints1", query = "SELECT c FROM CharacterAura c WHERE c.basepoints1 = :basepoints1"),
+    @NamedQuery(name = "CharacterAura.findByBasepoints2", query = "SELECT c FROM CharacterAura c WHERE c.basepoints2 = :basepoints2"),
+    @NamedQuery(name = "CharacterAura.findByPeriodictime0", query = "SELECT c FROM CharacterAura c WHERE c.periodictime0 = :periodictime0"),
+    @NamedQuery(name = "CharacterAura.findByPeriodictime1", query = "SELECT c FROM CharacterAura c WHERE c.periodictime1 = :periodictime1"),
+    @NamedQuery(name = "CharacterAura.findByPeriodictime2", query = "SELECT c FROM CharacterAura c WHERE c.periodictime2 = :periodictime2"),
+    @NamedQuery(name = "CharacterAura.findByMaxduration", query = "SELECT c FROM CharacterAura c WHERE c.maxduration = :maxduration"),
+    @NamedQuery(name = "CharacterAura.findByRemaintime", query = "SELECT c FROM CharacterAura c WHERE c.remaintime = :remaintime"),
+    @NamedQuery(name = "CharacterAura.findByEffIndexMask", query = "SELECT c FROM CharacterAura c WHERE c.effIndexMask = :effIndexMask")})
 public class CharacterAura {
   @Data
   public static class PrimaryKeys implements Serializable {

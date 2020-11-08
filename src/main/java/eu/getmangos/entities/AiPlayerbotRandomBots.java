@@ -1,6 +1,5 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
 import javax.persistence.*;
 import lombok.Data;
 
@@ -8,9 +7,15 @@ import lombok.Data;
 @Entity(name = "eu.getmangos.entities.AiPlayerbotRandomBots")
 @Table(name = "ai_playerbot_random_bots")
 @NamedQueries({
-    @NamedQuery(name = "AIPlayerBotRandomBots.findAll", query = "SELECT ai FROM AIPlayerBotRandomBots ai"),
-    @NamedQuery(name = "AIPlayerBotRandomBots.findById", query = "SELECT ai FROM AIPlayerBotRandomBots ai where ai.id = :id")
-})
+    @NamedQuery(name = "AiPlayerbotRandomBots.findAll", query = "SELECT a FROM AiPlayerbotRandomBots a"),
+    @NamedQuery(name = "AiPlayerbotRandomBots.findById", query = "SELECT a FROM AiPlayerbotRandomBots a WHERE a.id = :id"),
+    @NamedQuery(name = "AiPlayerbotRandomBots.findByOwner", query = "SELECT a FROM AiPlayerbotRandomBots a WHERE a.owner = :owner"),
+    @NamedQuery(name = "AiPlayerbotRandomBots.findByBot", query = "SELECT a FROM AiPlayerbotRandomBots a WHERE a.bot = :bot"),
+    @NamedQuery(name = "AiPlayerbotRandomBots.findByTime", query = "SELECT a FROM AiPlayerbotRandomBots a WHERE a.time = :time"),
+    @NamedQuery(name = "AiPlayerbotRandomBots.findByValidIn", query = "SELECT a FROM AiPlayerbotRandomBots a WHERE a.validIn = :validIn"),
+    @NamedQuery(name = "AiPlayerbotRandomBots.findByEvent", query = "SELECT a FROM AiPlayerbotRandomBots a WHERE a.event = :event"),
+    @NamedQuery(name = "AiPlayerbotRandomBots.findByValue", query = "SELECT a FROM AiPlayerbotRandomBots a WHERE a.value = :value"),
+    @NamedQuery(name = "AiPlayerbotRandomBots.findByData", query = "SELECT a FROM AiPlayerbotRandomBots a WHERE a.data = :data")})
 public class AiPlayerbotRandomBots {
 
   @Id

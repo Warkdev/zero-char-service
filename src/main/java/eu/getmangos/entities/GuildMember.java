@@ -1,6 +1,6 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -10,6 +10,13 @@ import lombok.Data;
 @Data
 @Entity(name = "eu.getmangos.entities.GuildMember")
 @Table(name = "guild_member")
+@NamedQueries({
+    @NamedQuery(name = "GuildMember.findAll", query = "SELECT g FROM GuildMember g"),
+    @NamedQuery(name = "GuildMember.findByGuildid", query = "SELECT g FROM GuildMember g WHERE g.guildid = :guildid"),
+    @NamedQuery(name = "GuildMember.findByGuid", query = "SELECT g FROM GuildMember g WHERE g.guid = :guid"),
+    @NamedQuery(name = "GuildMember.findByRank", query = "SELECT g FROM GuildMember g WHERE g.rank = :rank"),
+    @NamedQuery(name = "GuildMember.findByPnote", query = "SELECT g FROM GuildMember g WHERE g.pnote = :pnote"),
+    @NamedQuery(name = "GuildMember.findByOffnote", query = "SELECT g FROM GuildMember g WHERE g.offnote = :offnote")})
 public class GuildMember {
 
   /**

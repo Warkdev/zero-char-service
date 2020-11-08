@@ -1,6 +1,6 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -10,6 +10,12 @@ import lombok.Data;
 @Data
 @Entity(name = "eu.getmangos.entities.CharacterTicket")
 @Table(name = "character_ticket")
+@NamedQueries({
+    @NamedQuery(name = "CharacterTicket.findAll", query = "SELECT c FROM CharacterTicket c"),
+    @NamedQuery(name = "CharacterTicket.findByTicketId", query = "SELECT c FROM CharacterTicket c WHERE c.ticketId = :ticketId"),
+    @NamedQuery(name = "CharacterTicket.findByGuid", query = "SELECT c FROM CharacterTicket c WHERE c.guid = :guid"),
+    @NamedQuery(name = "CharacterTicket.findByTicketLastchange", query = "SELECT c FROM CharacterTicket c WHERE c.ticketLastchange = :ticketLastchange"),
+    @NamedQuery(name = "CharacterTicket.findByResolved", query = "SELECT c FROM CharacterTicket c WHERE c.resolved = :resolved")})
 public class CharacterTicket {
 
   /**

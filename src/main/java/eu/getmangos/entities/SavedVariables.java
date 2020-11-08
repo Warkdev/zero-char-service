@@ -1,6 +1,6 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -10,6 +10,10 @@ import lombok.Data;
 @Data
 @Entity(name = "eu.getmangos.entities.SavedVariables")
 @Table(name = "saved_variables")
+@NamedQueries({
+    @NamedQuery(name = "SavedVariables.findAll", query = "SELECT s FROM SavedVariables s"),
+    @NamedQuery(name = "SavedVariables.findByNextMaintenanceDate", query = "SELECT s FROM SavedVariables s WHERE s.nextMaintenanceDate = :nextMaintenanceDate"),
+    @NamedQuery(name = "SavedVariables.findByCleaningFlags", query = "SELECT s FROM SavedVariables s WHERE s.cleaningFlags = :cleaningFlags")})
 public class SavedVariables {
 
   /**

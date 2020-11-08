@@ -1,7 +1,7 @@
 package eu.getmangos.entities;
 
 import java.io.Serializable;
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -9,6 +9,11 @@ import lombok.Data;
 @Entity(name = "eu.getmangos.entities.GroupInstance")
 @Table(name = "group_instance")
 @IdClass(GroupInstance.PrimaryKeys.class)
+@NamedQueries({
+    @NamedQuery(name = "GroupInstance.findAll", query = "SELECT g FROM GroupInstance g"),
+    @NamedQuery(name = "GroupInstance.findByLeaderGuid", query = "SELECT g FROM GroupInstance g WHERE g.groupInstancePK.leaderGuid = :leaderGuid"),
+    @NamedQuery(name = "GroupInstance.findByInstance", query = "SELECT g FROM GroupInstance g WHERE g.groupInstancePK.instance = :instance"),
+    @NamedQuery(name = "GroupInstance.findByPermanent", query = "SELECT g FROM GroupInstance g WHERE g.permanent = :permanent")})
 public class GroupInstance {
   @Data
   public static class PrimaryKeys implements Serializable {

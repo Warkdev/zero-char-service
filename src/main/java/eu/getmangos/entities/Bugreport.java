@@ -1,6 +1,5 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
 import javax.persistence.*;
 import lombok.Data;
 
@@ -11,9 +10,8 @@ import lombok.Data;
 @Entity(name = "eu.getmangos.entities.Bugreport")
 @Table(name = "bugreport")
 @NamedQueries({
-    @NamedQuery(name = "BugReport.findAll", query = "SELECT b FROM BugReport b"),
-    @NamedQuery(name = "BugReport.findById", query = "SELECT b FROM BugReport b where b.id = :id")
-})
+    @NamedQuery(name = "Bugreport.findAll", query = "SELECT b FROM Bugreport b"),
+    @NamedQuery(name = "Bugreport.findById", query = "SELECT b FROM Bugreport b WHERE b.id = :id")})
 public class Bugreport {
 
   /**

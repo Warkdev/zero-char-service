@@ -1,6 +1,5 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
 import javax.persistence.*;
 import lombok.Data;
 
@@ -10,6 +9,29 @@ import lombok.Data;
 @Data
 @Entity(name = "eu.getmangos.entities.CharacterPet")
 @Table(name = "character_pet")
+@NamedQueries({
+    @NamedQuery(name = "CharacterPet.findAll", query = "SELECT c FROM CharacterPet c"),
+    @NamedQuery(name = "CharacterPet.findById", query = "SELECT c FROM CharacterPet c WHERE c.id = :id"),
+    @NamedQuery(name = "CharacterPet.findByEntry", query = "SELECT c FROM CharacterPet c WHERE c.entry = :entry"),
+    @NamedQuery(name = "CharacterPet.findByOwner", query = "SELECT c FROM CharacterPet c WHERE c.owner = :owner"),
+    @NamedQuery(name = "CharacterPet.findByModelid", query = "SELECT c FROM CharacterPet c WHERE c.modelid = :modelid"),
+    @NamedQuery(name = "CharacterPet.findByCreatedBySpell", query = "SELECT c FROM CharacterPet c WHERE c.createdBySpell = :createdBySpell"),
+    @NamedQuery(name = "CharacterPet.findByPetType", query = "SELECT c FROM CharacterPet c WHERE c.petType = :petType"),
+    @NamedQuery(name = "CharacterPet.findByLevel", query = "SELECT c FROM CharacterPet c WHERE c.level = :level"),
+    @NamedQuery(name = "CharacterPet.findByExp", query = "SELECT c FROM CharacterPet c WHERE c.exp = :exp"),
+    @NamedQuery(name = "CharacterPet.findByReactstate", query = "SELECT c FROM CharacterPet c WHERE c.reactstate = :reactstate"),
+    @NamedQuery(name = "CharacterPet.findByLoyaltypoints", query = "SELECT c FROM CharacterPet c WHERE c.loyaltypoints = :loyaltypoints"),
+    @NamedQuery(name = "CharacterPet.findByLoyalty", query = "SELECT c FROM CharacterPet c WHERE c.loyalty = :loyalty"),
+    @NamedQuery(name = "CharacterPet.findByTrainpoint", query = "SELECT c FROM CharacterPet c WHERE c.trainpoint = :trainpoint"),
+    @NamedQuery(name = "CharacterPet.findByName", query = "SELECT c FROM CharacterPet c WHERE c.name = :name"),
+    @NamedQuery(name = "CharacterPet.findByRenamed", query = "SELECT c FROM CharacterPet c WHERE c.renamed = :renamed"),
+    @NamedQuery(name = "CharacterPet.findBySlot", query = "SELECT c FROM CharacterPet c WHERE c.slot = :slot"),
+    @NamedQuery(name = "CharacterPet.findByCurhealth", query = "SELECT c FROM CharacterPet c WHERE c.curhealth = :curhealth"),
+    @NamedQuery(name = "CharacterPet.findByCurmana", query = "SELECT c FROM CharacterPet c WHERE c.curmana = :curmana"),
+    @NamedQuery(name = "CharacterPet.findByCurhappiness", query = "SELECT c FROM CharacterPet c WHERE c.curhappiness = :curhappiness"),
+    @NamedQuery(name = "CharacterPet.findBySavetime", query = "SELECT c FROM CharacterPet c WHERE c.savetime = :savetime"),
+    @NamedQuery(name = "CharacterPet.findByResettalentsCost", query = "SELECT c FROM CharacterPet c WHERE c.resettalentsCost = :resettalentsCost"),
+    @NamedQuery(name = "CharacterPet.findByResettalentsTime", query = "SELECT c FROM CharacterPet c WHERE c.resettalentsTime = :resettalentsTime")})
 public class CharacterPet {
 
   /**

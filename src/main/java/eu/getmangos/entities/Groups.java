@@ -1,6 +1,6 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -10,6 +10,24 @@ import lombok.Data;
 @Data
 @Entity(name = "eu.getmangos.entities.Groups")
 @Table(name = "groups")
+@NamedQueries({
+    @NamedQuery(name = "Groups.findAll", query = "SELECT g FROM Groups g"),
+    @NamedQuery(name = "Groups.findByGroupId", query = "SELECT g FROM Groups g WHERE g.groupId = :groupId"),
+    @NamedQuery(name = "Groups.findByLeaderGuid", query = "SELECT g FROM Groups g WHERE g.leaderGuid = :leaderGuid"),
+    @NamedQuery(name = "Groups.findByMainTank", query = "SELECT g FROM Groups g WHERE g.mainTank = :mainTank"),
+    @NamedQuery(name = "Groups.findByMainAssistant", query = "SELECT g FROM Groups g WHERE g.mainAssistant = :mainAssistant"),
+    @NamedQuery(name = "Groups.findByLootMethod", query = "SELECT g FROM Groups g WHERE g.lootMethod = :lootMethod"),
+    @NamedQuery(name = "Groups.findByLooterGuid", query = "SELECT g FROM Groups g WHERE g.looterGuid = :looterGuid"),
+    @NamedQuery(name = "Groups.findByLootThreshold", query = "SELECT g FROM Groups g WHERE g.lootThreshold = :lootThreshold"),
+    @NamedQuery(name = "Groups.findByIcon1", query = "SELECT g FROM Groups g WHERE g.icon1 = :icon1"),
+    @NamedQuery(name = "Groups.findByIcon2", query = "SELECT g FROM Groups g WHERE g.icon2 = :icon2"),
+    @NamedQuery(name = "Groups.findByIcon3", query = "SELECT g FROM Groups g WHERE g.icon3 = :icon3"),
+    @NamedQuery(name = "Groups.findByIcon4", query = "SELECT g FROM Groups g WHERE g.icon4 = :icon4"),
+    @NamedQuery(name = "Groups.findByIcon5", query = "SELECT g FROM Groups g WHERE g.icon5 = :icon5"),
+    @NamedQuery(name = "Groups.findByIcon6", query = "SELECT g FROM Groups g WHERE g.icon6 = :icon6"),
+    @NamedQuery(name = "Groups.findByIcon7", query = "SELECT g FROM Groups g WHERE g.icon7 = :icon7"),
+    @NamedQuery(name = "Groups.findByIcon8", query = "SELECT g FROM Groups g WHERE g.icon8 = :icon8"),
+    @NamedQuery(name = "Groups.findByIsRaid", query = "SELECT g FROM Groups g WHERE g.isRaid = :isRaid")})
 public class Groups {
 
   /**

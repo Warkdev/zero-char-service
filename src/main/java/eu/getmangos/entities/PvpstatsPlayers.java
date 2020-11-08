@@ -1,7 +1,7 @@
 package eu.getmangos.entities;
 
 import java.io.Serializable;
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -9,6 +9,21 @@ import lombok.Data;
 @Entity(name = "eu.getmangos.entities.PvpstatsPlayers")
 @Table(name = "pvpstats_players")
 @IdClass(PvpstatsPlayers.PrimaryKeys.class)
+@NamedQueries({
+    @NamedQuery(name = "PvpstatsPlayers.findAll", query = "SELECT p FROM PvpstatsPlayers p"),
+    @NamedQuery(name = "PvpstatsPlayers.findByBattlegroundId", query = "SELECT p FROM PvpstatsPlayers p WHERE p.pvpstatsPlayersPK.battlegroundId = :battlegroundId"),
+    @NamedQuery(name = "PvpstatsPlayers.findByCharacterGuid", query = "SELECT p FROM PvpstatsPlayers p WHERE p.pvpstatsPlayersPK.characterGuid = :characterGuid"),
+    @NamedQuery(name = "PvpstatsPlayers.findByScoreKillingBlows", query = "SELECT p FROM PvpstatsPlayers p WHERE p.scoreKillingBlows = :scoreKillingBlows"),
+    @NamedQuery(name = "PvpstatsPlayers.findByScoreDeaths", query = "SELECT p FROM PvpstatsPlayers p WHERE p.scoreDeaths = :scoreDeaths"),
+    @NamedQuery(name = "PvpstatsPlayers.findByScoreHonorableKills", query = "SELECT p FROM PvpstatsPlayers p WHERE p.scoreHonorableKills = :scoreHonorableKills"),
+    @NamedQuery(name = "PvpstatsPlayers.findByScoreBonusHonor", query = "SELECT p FROM PvpstatsPlayers p WHERE p.scoreBonusHonor = :scoreBonusHonor"),
+    @NamedQuery(name = "PvpstatsPlayers.findByScoreDamageDone", query = "SELECT p FROM PvpstatsPlayers p WHERE p.scoreDamageDone = :scoreDamageDone"),
+    @NamedQuery(name = "PvpstatsPlayers.findByScoreHealingDone", query = "SELECT p FROM PvpstatsPlayers p WHERE p.scoreHealingDone = :scoreHealingDone"),
+    @NamedQuery(name = "PvpstatsPlayers.findByAttr1", query = "SELECT p FROM PvpstatsPlayers p WHERE p.attr1 = :attr1"),
+    @NamedQuery(name = "PvpstatsPlayers.findByAttr2", query = "SELECT p FROM PvpstatsPlayers p WHERE p.attr2 = :attr2"),
+    @NamedQuery(name = "PvpstatsPlayers.findByAttr3", query = "SELECT p FROM PvpstatsPlayers p WHERE p.attr3 = :attr3"),
+    @NamedQuery(name = "PvpstatsPlayers.findByAttr4", query = "SELECT p FROM PvpstatsPlayers p WHERE p.attr4 = :attr4"),
+    @NamedQuery(name = "PvpstatsPlayers.findByAttr5", query = "SELECT p FROM PvpstatsPlayers p WHERE p.attr5 = :attr5")})
 public class PvpstatsPlayers {
   @Data
   public static class PrimaryKeys implements Serializable {

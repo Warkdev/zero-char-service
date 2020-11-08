@@ -1,7 +1,7 @@
 package eu.getmangos.entities;
 
 import java.io.Serializable;
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -12,6 +12,12 @@ import lombok.Data;
 @Entity(name = "eu.getmangos.entities.GroupMember")
 @Table(name = "group_member")
 @IdClass(GroupMember.PrimaryKeys.class)
+@NamedQueries({
+    @NamedQuery(name = "GroupMember.findAll", query = "SELECT g FROM GroupMember g"),
+    @NamedQuery(name = "GroupMember.findByGroupId", query = "SELECT g FROM GroupMember g WHERE g.groupMemberPK.groupId = :groupId"),
+    @NamedQuery(name = "GroupMember.findByMemberGuid", query = "SELECT g FROM GroupMember g WHERE g.groupMemberPK.memberGuid = :memberGuid"),
+    @NamedQuery(name = "GroupMember.findByAssistant", query = "SELECT g FROM GroupMember g WHERE g.assistant = :assistant"),
+    @NamedQuery(name = "GroupMember.findBySubgroup", query = "SELECT g FROM GroupMember g WHERE g.subgroup = :subgroup")})
 public class GroupMember {
   @Data
   public static class PrimaryKeys implements Serializable {

@@ -1,6 +1,6 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -10,6 +10,14 @@ import lombok.Data;
 @Data
 @Entity(name = "eu.getmangos.entities.CharacterHomebind")
 @Table(name = "character_homebind")
+@NamedQueries({
+    @NamedQuery(name = "CharacterHomebind.findAll", query = "SELECT c FROM CharacterHomebind c"),
+    @NamedQuery(name = "CharacterHomebind.findByGuid", query = "SELECT c FROM CharacterHomebind c WHERE c.guid = :guid"),
+    @NamedQuery(name = "CharacterHomebind.findByMap", query = "SELECT c FROM CharacterHomebind c WHERE c.map = :map"),
+    @NamedQuery(name = "CharacterHomebind.findByZone", query = "SELECT c FROM CharacterHomebind c WHERE c.zone = :zone"),
+    @NamedQuery(name = "CharacterHomebind.findByPositionX", query = "SELECT c FROM CharacterHomebind c WHERE c.positionX = :positionX"),
+    @NamedQuery(name = "CharacterHomebind.findByPositionY", query = "SELECT c FROM CharacterHomebind c WHERE c.positionY = :positionY"),
+    @NamedQuery(name = "CharacterHomebind.findByPositionZ", query = "SELECT c FROM CharacterHomebind c WHERE c.positionZ = :positionZ")})
 public class CharacterHomebind {
 
   /**

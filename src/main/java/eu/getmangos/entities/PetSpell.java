@@ -1,7 +1,7 @@
 package eu.getmangos.entities;
 
 import java.io.Serializable;
-import java.sql.*;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -12,6 +12,11 @@ import lombok.Data;
 @Entity(name = "eu.getmangos.entities.PetSpell")
 @Table(name = "pet_spell")
 @IdClass(PetSpell.PrimaryKeys.class)
+@NamedQueries({
+    @NamedQuery(name = "PetSpell.findAll", query = "SELECT p FROM PetSpell p"),
+    @NamedQuery(name = "PetSpell.findByGuid", query = "SELECT p FROM PetSpell p WHERE p.petSpellPK.guid = :guid"),
+    @NamedQuery(name = "PetSpell.findBySpell", query = "SELECT p FROM PetSpell p WHERE p.petSpellPK.spell = :spell"),
+    @NamedQuery(name = "PetSpell.findByActive", query = "SELECT p FROM PetSpell p WHERE p.active = :active")})
 public class PetSpell {
   @Data
   public static class PrimaryKeys implements Serializable {

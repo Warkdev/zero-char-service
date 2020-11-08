@@ -1,6 +1,5 @@
 package eu.getmangos.entities;
 
-import java.sql.*;
 import javax.persistence.*;
 import lombok.Data;
 
@@ -10,6 +9,18 @@ import lombok.Data;
 @Data
 @Entity(name = "eu.getmangos.entities.Corpse")
 @Table(name = "corpse")
+@NamedQueries({
+    @NamedQuery(name = "Corpse.findAll", query = "SELECT c FROM Corpse c"),
+    @NamedQuery(name = "Corpse.findByGuid", query = "SELECT c FROM Corpse c WHERE c.guid = :guid"),
+    @NamedQuery(name = "Corpse.findByPlayer", query = "SELECT c FROM Corpse c WHERE c.player = :player"),
+    @NamedQuery(name = "Corpse.findByPositionX", query = "SELECT c FROM Corpse c WHERE c.positionX = :positionX"),
+    @NamedQuery(name = "Corpse.findByPositionY", query = "SELECT c FROM Corpse c WHERE c.positionY = :positionY"),
+    @NamedQuery(name = "Corpse.findByPositionZ", query = "SELECT c FROM Corpse c WHERE c.positionZ = :positionZ"),
+    @NamedQuery(name = "Corpse.findByOrientation", query = "SELECT c FROM Corpse c WHERE c.orientation = :orientation"),
+    @NamedQuery(name = "Corpse.findByMap", query = "SELECT c FROM Corpse c WHERE c.map = :map"),
+    @NamedQuery(name = "Corpse.findByTime", query = "SELECT c FROM Corpse c WHERE c.time = :time"),
+    @NamedQuery(name = "Corpse.findByCorpseType", query = "SELECT c FROM Corpse c WHERE c.corpseType = :corpseType"),
+    @NamedQuery(name = "Corpse.findByInstance", query = "SELECT c FROM Corpse c WHERE c.instance = :instance")})
 public class Corpse {
 
   /**
