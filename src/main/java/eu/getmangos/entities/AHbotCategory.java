@@ -3,6 +3,7 @@ package eu.getmangos.entities;
 import javax.persistence.*;
 import lombok.Data;
 
+@Data
 @Entity(name = "eu.getmangos.entities.AHbotCategory")
 @Table(name = "ahbot_category")
 @NamedQueries({
