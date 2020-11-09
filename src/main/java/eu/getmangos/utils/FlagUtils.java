@@ -1,10 +1,13 @@
 package eu.getmangos.utils;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * This class must help to manage flags that are using bits inside integer
  * E.g: 2 = 0010, meaning that the second flag is set and all the others are not.
  * @author GetMangos
  */
+@UtilityClass
 public class FlagUtils {
 
     /**
