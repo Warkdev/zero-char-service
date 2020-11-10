@@ -8,14 +8,8 @@ import lombok.Data;
 @Table(name = "ai_playerbot_random_bots")
 @NamedQueries({
     @NamedQuery(name = "AiPlayerbotRandomBots.findAll", query = "SELECT a FROM AiPlayerbotRandomBots a"),
-    @NamedQuery(name = "AiPlayerbotRandomBots.findById", query = "SELECT a FROM AiPlayerbotRandomBots a WHERE a.id = :id"),
-    @NamedQuery(name = "AiPlayerbotRandomBots.findByOwner", query = "SELECT a FROM AiPlayerbotRandomBots a WHERE a.owner = :owner"),
-    @NamedQuery(name = "AiPlayerbotRandomBots.findByBot", query = "SELECT a FROM AiPlayerbotRandomBots a WHERE a.bot = :bot"),
-    @NamedQuery(name = "AiPlayerbotRandomBots.findByTime", query = "SELECT a FROM AiPlayerbotRandomBots a WHERE a.time = :time"),
-    @NamedQuery(name = "AiPlayerbotRandomBots.findByValidIn", query = "SELECT a FROM AiPlayerbotRandomBots a WHERE a.validIn = :validIn"),
-    @NamedQuery(name = "AiPlayerbotRandomBots.findByEvent", query = "SELECT a FROM AiPlayerbotRandomBots a WHERE a.event = :event"),
-    @NamedQuery(name = "AiPlayerbotRandomBots.findByValue", query = "SELECT a FROM AiPlayerbotRandomBots a WHERE a.value = :value"),
-    @NamedQuery(name = "AiPlayerbotRandomBots.findByData", query = "SELECT a FROM AiPlayerbotRandomBots a WHERE a.data = :data")})
+    @NamedQuery(name = "AiPlayerbotRandomBots.findEventValue", query = "SELECT a FROM AiPlayerbotRandomBots WHERE a.owner = :owner AND a.bot = :bot AND event = :event")
+    })
 public class AiPlayerbotRandomBots {
 
   @Id
