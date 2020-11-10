@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import org.slf4j.Logger;
 
 import eu.getmangos.entities.AiPlayerbotNames;
+import eu.getmangos.entities.AiPlayerbotRandomBots;
 
 @RequestScoped
 public class AIPlayerBotController {
@@ -36,5 +37,25 @@ public class AIPlayerBotController {
         logger.debug("getBotNames() exit.");
 
         return listBotNames;
+    }
+
+    /**
+     * Returns a list of random bots from the database.
+     * @param page The page from which we've to browse.
+     * @param pageSize The maximum amount of results.
+     * @return A list of random bots from the database.
+     */
+    @SuppressWarnings("unchecked")
+    public List<AiPlayerbotRandomBots> getRandomBots(int page, int pageSize) {
+        logger.debug("getRandomBots() entry.");
+
+        List<AiPlayerbotRandomBots> listBots = em.createNamedQuery("AiPlayerbotRandomBots.findAll")
+                                                .setFirstResult((page - 1) * pageSize)
+                                                .setMaxResults(pageSize)
+                                                .getResultList();
+
+        logger.debug("getRandomBots() exit.");
+
+        return listBots;
     }
 }
