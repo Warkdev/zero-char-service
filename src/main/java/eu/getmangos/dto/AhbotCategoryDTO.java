@@ -16,7 +16,7 @@ public class AhbotCategoryDTO implements Serializable{
     private long id;
 
     @Schema(description = "The category to which the multiplier applies")
-    private String category;
+    private Long category;
 
     @Schema(description = "The cost multiplier")
     private java.math.BigDecimal multiplier;

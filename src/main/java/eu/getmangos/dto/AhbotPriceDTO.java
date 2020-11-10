@@ -15,7 +15,7 @@ public class AhbotPriceDTO implements Serializable {
     private Long id;
 
     @Schema(description = "The item ID for which the market price is adjusted")
-    private String item;
+    private Long item;
 
     @Schema(description = "The average market price for this item")
     private java.math.BigDecimal price;
