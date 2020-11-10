@@ -40,6 +40,14 @@ public class AhBotResourceService implements AhBotResource {
     public Response findAhBotHistory(Integer page, Integer pageSize) {
         logger.debug("findAhBotHistory() entry.");
 
+        if(page == null) {
+            page = 1;
+        }
+
+        if(pageSize == null) {
+            pageSize = 20;
+        }
+
         List<AhbotHistoryDTO> listHistory = new ArrayList<>();
         for(AhbotHistory hist : ahbotController.getAuctionBotHistory(page, pageSize)) {
             listHistory.add(historyMapper.historyToDTO(hist));
@@ -52,6 +60,14 @@ public class AhBotResourceService implements AhBotResource {
     @Override
     public Response findAhBotMarketPrices(Long auctionHouse, Long item, Integer page, Integer pageSize) {
         logger.debug("findAhBotMarketPrices() entry.");
+
+        if(page == null) {
+            page = 1;
+        }
+
+        if(pageSize == null) {
+            pageSize = 20;
+        }
 
         List<AhbotPriceDTO> listPrices = new ArrayList<>();
 
