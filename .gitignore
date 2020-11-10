@@ -5,6 +5,7 @@ target/
 .classpath
 org.eclipse*
 .project
+.factorypath
 
 # OpenLiberty specific
 server.xml
