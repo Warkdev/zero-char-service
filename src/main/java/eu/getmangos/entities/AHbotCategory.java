@@ -3,7 +3,8 @@ package eu.getmangos.entities;
 import javax.persistence.*;
 import lombok.Data;
 
-@Entity(name = "eu.getmangos.entities.AHbotCategory")
+@Data
+@Entity
 @Table(name = "ahbot_category")
 @NamedQueries({
     @NamedQuery(name = "AhbotCategory.findAll", query = "SELECT a FROM AhbotCategory a"),
@@ -12,7 +13,7 @@ import lombok.Data;
     @NamedQuery(name = "AhbotCategory.findByMultiplier", query = "SELECT a FROM AhbotCategory a WHERE a.multiplier = :multiplier"),
     @NamedQuery(name = "AhbotCategory.findByMaxAuctionCount", query = "SELECT a FROM AhbotCategory a WHERE a.maxAuctionCount = :maxAuctionCount"),
     @NamedQuery(name = "AhbotCategory.findByExpireTime", query = "SELECT a FROM AhbotCategory a WHERE a.expireTime = :expireTime")})
-public class AHbotCategory {
+public class AhbotCategory {
 
   /**
    * Unique identifier of the category
