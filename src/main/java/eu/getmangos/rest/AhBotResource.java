@@ -30,7 +30,7 @@ public interface AhBotResource {
     @Path("/history")
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Retrieves a list of AH Bot Auction History given the page and the page size",
-        description = "This API is returning a list of historical auctions."
+        description = "This API is returning a list of historical auctions. A missing page and page size will return the first 20 results."
     )
     @APIResponses(
         value = {
@@ -49,7 +49,7 @@ public interface AhBotResource {
     @Path("/market_price/{auction_house}/{item}")
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Retrieves a list of AH Bot Market Prices for an item at an auction house given the page and the page size",
-        description = "This API is returning a list of market prices used by the AH Bot."
+        description = "This API is returning a list of market prices used by the AH Bot. A missing page and page size will return the first 20 results."
     )
     @APIResponses(
         value = {
