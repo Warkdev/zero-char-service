@@ -10,7 +10,7 @@ import eu.getmangos.entities.AhbotCategory;
 @Mapper(componentModel = "cdi")
 public interface AhBotCategoryMapper {
 
-    AhbotCategoryDTO accountToDTO(AhbotCategory multipliers);
+    AhbotCategoryDTO categoryToDTO(AhbotCategory multipliers);
 
     AhbotCategory dtoToEntity(AhbotCategoryDTO dto);
 

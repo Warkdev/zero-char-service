@@ -8,7 +8,7 @@ import eu.getmangos.entities.AhbotPrice;
 @Mapper(componentModel = "cdi")
 public interface AhBotPriceMapper {
 
-    AhbotPriceDTO accountToDTO(AhbotPrice price);
+    AhbotPriceDTO priceToDTO(AhbotPrice price);
 
     AhbotPrice dtoToEntity(AhbotPriceDTO dto);
 }

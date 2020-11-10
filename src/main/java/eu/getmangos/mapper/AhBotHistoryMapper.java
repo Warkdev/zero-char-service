@@ -8,7 +8,7 @@ import eu.getmangos.entities.AhbotHistory;
 @Mapper(componentModel = "cdi")
 public interface AhBotHistoryMapper {
 
-    AhbotHistoryDTO accountToDTO(AhbotHistory history);
+    AhbotHistoryDTO historyToDTO(AhbotHistory history);
 
     AhbotHistory dtoToEntity(AhbotHistoryDTO dto);
 }

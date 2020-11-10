@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <description>REST API for the Auth Database of Mangos Zero</description>
+    <description>REST API for the Char Database of Mangos Zero</description>
     <resource-ref>
         <description>Zero Char DB Connection</description>
         <res-ref-name>jdbc/CharDBDS</res-ref-name>
