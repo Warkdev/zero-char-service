@@ -17,7 +17,7 @@ import eu.getmangos.entities.AhbotPrice;
 public class AHbotController {
     @Inject private Logger logger;
 
-    @PersistenceContext(name = "CHAR_PU")
+    @PersistenceContext(unitName = "CHAR_PU")
     private EntityManager em;
 
     /**
@@ -52,7 +52,7 @@ public class AHbotController {
         logger.debug("getAuctionBotPrice() entry.");
 
         List<AhbotPrice> listPrices = em.createNamedQuery("AhbotPrice.findByItemAndAuctionHouse")
-                                        .setParameter("item", item)
+                                        .setParameter("item", item+"")
                                         .setParameter("auctionHouse", auctionHouse)
                                         .setFirstResult((pageNumber -1 ) * pageSize)
                                         .setMaxResults(pageSize).getResultList();
@@ -63,7 +63,7 @@ public class AHbotController {
     }
 
     /**
-     * Returns a list of category multiplies stored in the database.
+     * Returns a list of category multipliers stored in the database.
      * @return A list of AhbotCategory records.
      */
     @SuppressWarnings("unchecked")

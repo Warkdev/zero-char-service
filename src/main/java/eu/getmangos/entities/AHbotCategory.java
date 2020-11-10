@@ -4,7 +4,7 @@ import javax.persistence.*;
 import lombok.Data;
 
 @Data
-@Entity(name = "eu.getmangos.entities.AHbotCategory")
+@Entity
 @Table(name = "ahbot_category")
 @NamedQueries({
     @NamedQuery(name = "AhbotCategory.findAll", query = "SELECT a FROM AhbotCategory a"),
