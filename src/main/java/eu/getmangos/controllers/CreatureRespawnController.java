@@ -143,6 +143,7 @@ public class CreatureRespawnController {
         }
 
         List<CreatureRespawn> list = em.createNamedQuery("CreatureRespawn.findByInstance")
+                                .setParameter("instance", instance)
                                 .setFirstResult((page - 1) * pageSize)
                                 .setMaxResults(pageSize)
                                 .getResultList();
