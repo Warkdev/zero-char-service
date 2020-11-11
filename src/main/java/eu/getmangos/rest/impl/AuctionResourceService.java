@@ -149,7 +149,9 @@ public class AuctionResourceService implements AuctionResource {
     @Override
     public Response updateAuction(Integer auctionId, AuctionDTO entity) {
         try {
-            this.auctionController.update(auctionMapper.dtoToEntity(entity));
+            Auction auction = auctionMapper.dtoToEntity(entity);
+            auction.setId(auctionId);
+            this.auctionController.update(auction);
         } catch (DAOException daoEx) {
                 return Response.status(400).entity(daoEx.getMessage()).build();
         } catch (Exception ex) {
