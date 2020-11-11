@@ -48,8 +48,14 @@ public class BugReportController {
     public void update(Bugreport report) throws DAOException {
         logger.debug("update() entry.");
 
+        Bugreport exist = find(report.getId());
+
+        if(exist == null) {
+            throw new DAOException("The entity does not exist");
+        }
+
         try {
-            em.persist(report);
+            em.merge(report);
         } catch (Exception e) {
             logger.debug("Exception raised while updating the bug report: "+e.getMessage());
             throw new DAOException("Error while updating the bug report.");
