@@ -67,6 +67,31 @@ public class InstanceResourceService implements InstanceResource {
     @Tag(name = "creature")
     @Tag(name = "respawn")
     @Tag(name = "instance")
+    public Response findCreatureRespawn(Integer instanceId, Integer guid) {
+        logger.debug("findCreatureRespawn() entry.");
+
+        CreatureRespawn entity = null;
+
+        try {
+            entity = creatureRespawnController.find(instanceId, guid);
+        } catch (DAOException dao) {
+            logger.debug("Error while retrieving the timer "+dao.getMessage());
+            return Response.status(500).build();
+        } finally {
+            logger.debug("findCreatureRespawn() exit.");
+        }
+
+        if(entity == null) {
+            return Response.status(404).build();
+        }
+
+        return Response.status(200).entity(creatureMapper.map(entity)).build();
+    }
+
+    @Override
+    @Tag(name = "creature")
+    @Tag(name = "respawn")
+    @Tag(name = "instance")
     public Response createCreatureRespawn(Integer instanceId, CreatureRespawnDTO entity) {
         try {
             entity.setInstance(instanceId);

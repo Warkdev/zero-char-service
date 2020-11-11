@@ -40,6 +40,25 @@ public interface InstanceResource {
     )
     public Response findAllCreatureRespawn(@PathParam("instance_id") Integer instanceId, @QueryParam("page") Integer page, @QueryParam("page_size") Integer pageSize);
 
+    @GET
+    @Path("/{instance_id}/creature_respawn/{guid}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Retrieves a specific creature respawn timer for the given instance from the database.",
+        description = "This API is returning a specific creature respawn timer from the database."
+    )
+    @APIResponses(
+        value = {
+            @APIResponse(responseCode = "200", description = "A list of creature respawn timers", content = @Content(
+                        mediaType = "application/json", schema = @Schema(implementation = CreatureRespawnDTO.class)
+                )
+            ),
+            @APIResponse(responseCode = "400", description = "Error with the request"),
+            @APIResponse(responseCode = "404", description = "Timer not found"),
+            @APIResponse(responseCode = "500", description = "An unexpected event occured")
+        }
+    )
+    public Response findCreatureRespawn(@PathParam("instance_id") Integer instanceId, @PathParam("guid") Integer guid);
+
     @POST
     @Path("/{instance_id}/creature_respawn")
     @Produces(MediaType.APPLICATION_JSON)
