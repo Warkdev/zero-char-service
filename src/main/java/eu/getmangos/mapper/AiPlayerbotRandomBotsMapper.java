@@ -13,6 +13,14 @@ public interface AiPlayerbotRandomBotsMapper {
 
     AiPlayerbotRandomBots dtoToEntity(AiPlayerbotRandomBotsDTO dto);
 
+    default boolean map(Long value) {
+        return value == 1;
+    }
+
+    default Long map(boolean value) {
+        return (value ? 1L : 0L);
+    }
+
     default AiPlayerbotRandomBotEvent mapEvent(String event) {
         return AiPlayerbotRandomBotEvent.convert(event);
     }
