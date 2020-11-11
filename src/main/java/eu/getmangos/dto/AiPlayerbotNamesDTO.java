@@ -9,6 +9,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@Schema(hidden = true)
 public class AiPlayerbotNamesDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -19,7 +20,7 @@ public class AiPlayerbotNamesDTO implements Serializable {
     @Schema(description = "A possible name for a random player bot")
     private String name;
 
-    @Schema(hidden = true)
+    /**@Schema(hidden = true)
     private Byte gender;
 
     @Schema(hidden = true)
@@ -35,5 +36,5 @@ public class AiPlayerbotNamesDTO implements Serializable {
     private boolean priority;
 
     @Schema(hidden = true)
-    private boolean inUse;
+    private boolean inUse;*/
 }

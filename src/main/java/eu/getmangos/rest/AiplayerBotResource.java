@@ -39,7 +39,7 @@ public interface AiplayerBotResource {
     public Response findBotNames(@QueryParam("page") Integer page, @QueryParam("page_size") Integer pageSize);
 
     @GET
-    @Path("/ai/events")
+    @Path("/events")
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Retrieves a list of bot events given the page and the page size",
         description = "This API is returning a list of bot events processed or to be processed by the AI Playerbot. A missing page and page size will return the first 20 results."
@@ -57,7 +57,7 @@ public interface AiplayerBotResource {
     public Response findAllBotEvents(@QueryParam("page") Integer page, @QueryParam("page_size") Integer pageSize);
 
     @GET
-    @Path("/ai/events/{bot_id}")
+    @Path("/events/{bot_id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Retrieves a list of events processed or to be processed for a given bot",
         description = "This API is returning a list of events for the given bot."
@@ -74,8 +74,26 @@ public interface AiplayerBotResource {
     )
     public Response findBotEvents(@PathParam("bot_id") long botId);
 
+    @GET
+    @Path("/maxbots")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Retrieves The maximum amount of bots allowed for the AI PlayerBot system",
+        description = "This API is returning an Integer representing the maximum amount of bots."
+    )
+    @APIResponses(
+        value = {
+            @APIResponse(responseCode = "200", description = "The maximum amount of bots", content = @Content(
+                        mediaType = "application/json"
+                )
+            ),
+            @APIResponse(responseCode = "400", description = "Error with the request"),
+            @APIResponse(responseCode = "500", description = "An unexpected event occured")
+        }
+    )
+    public Response getMaxBotCount();
+
     @DELETE
-    @Path("/ai/events/reset")
+    @Path("/events/reset")
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Reset the AI Bot event system",
         description = "This API is deleting all AI Bot Events processed or to be processed. You must initialize the system again after running this command."

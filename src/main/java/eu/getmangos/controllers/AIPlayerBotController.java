@@ -31,14 +31,14 @@ public class AIPlayerBotController {
      */
     @SuppressWarnings("unchecked")
     public List<AiPlayerbotNames> getBotNames(int page, int pageSize) {
-        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() entry.");
+        logger.debug("getBotNames() entry.");
 
         List<AiPlayerbotNames> listBotNames = em.createNamedQuery("AiPlayerbotNames.findAll")
                                                 .setFirstResult((page - 1) * pageSize)
                                                 .setMaxResults(pageSize)
                                                 .getResultList();
 
-        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() exit.");
+        logger.debug("getBotNames() exit.");
 
         return listBotNames;
     }
@@ -51,14 +51,14 @@ public class AIPlayerBotController {
      */
     @SuppressWarnings("unchecked")
     public List<AiPlayerbotRandomBots> getRandomBots(int page, int pageSize) {
-        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() entry.");
+        logger.debug("getRandomBots() entry.");
 
         List<AiPlayerbotRandomBots> listBots = em.createNamedQuery("AiPlayerbotRandomBots.findAll")
                                                 .setFirstResult((page - 1) * pageSize)
                                                 .setMaxResults(pageSize)
                                                 .getResultList();
 
-        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() exit.");
+        logger.debug("getRandomBots() exit.");
 
         return listBots;
     }
@@ -68,19 +68,19 @@ public class AIPlayerBotController {
      * @return
      */
     public Long getMaxAllowedBotCount() {
-        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() entry.");
+        logger.debug("getMaxAllowedBotCount() entry.");
 
         try {
             AiPlayerbotRandomBots data = em.createNamedQuery("AiPlayerbotRandomBots.findEventValue", AiPlayerbotRandomBots.class)
                                         .setParameter("owner", 0)
                                         .setParameter("bot", 0)
-                                        .setParameter("event", AiPlayerbotRandomBotEvent.BOTCOUNT)
+                                        .setParameter("event", AiPlayerbotRandomBotEvent.BOTCOUNT.event)
                                         .getSingleResult();
             return data.getValue();
         } catch (NoResultException | NonUniqueResultException ex) {
             return 0L;
         } finally {
-            logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() exit.");
+            logger.debug("getMaxAllowedBotCount() exit.");
         }
     }
 
@@ -91,14 +91,14 @@ public class AIPlayerBotController {
      */
     @SuppressWarnings("unchecked")
     public List<AiPlayerbotRandomBots> getBotListEvents(long bot) {
-        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() entry.");
+        logger.debug("getBotListEvents() entry.");
 
         List<AiPlayerbotRandomBots> data = em.createNamedQuery("AiPlayerbotRandomBots.findBotEvents")
                                     .setParameter("owner", 0)
                                     .setParameter("bot", bot)
                                     .getResultList();
 
-        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() exit.");
+        logger.debug("getBotListEvents() exit.");
         return data;
     }
 
@@ -107,10 +107,10 @@ public class AIPlayerBotController {
      */
     @Transactional
     public void reset() {
-        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() entry.");
+        logger.debug("reset() entry.");
 
         em.createNamedQuery("AiPlayerbotRandomBots.reset").executeUpdate();
 
-        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() exit.");
+        logger.debug("reset() exit.");
     }
 }

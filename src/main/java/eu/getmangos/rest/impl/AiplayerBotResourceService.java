@@ -34,7 +34,7 @@ public class AiplayerBotResourceService implements AiplayerBotResource {
 
     @Override
     public Response findBotNames(Integer page, Integer pageSize) {
-        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() entry.");
+        logger.debug("findBotNames() entry.");
 
         if(page == null) {
             page = 1;
@@ -49,13 +49,13 @@ public class AiplayerBotResourceService implements AiplayerBotResource {
             list.add(namesMapper.namesToDTO(name));
         }
 
-        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() exit.");
+        logger.debug("findBotNames() exit.");
         return Response.status(200).entity(list).build();
     }
 
     @Override
     public Response findAllBotEvents(Integer page, Integer pageSize) {
-        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() entry.");
+        logger.debug("findAllBotEvents() entry.");
 
         if(page == null) {
             page = 1;
@@ -70,30 +70,41 @@ public class AiplayerBotResourceService implements AiplayerBotResource {
             list.add(eventsMapper.botToDTO(event));
         }
 
-        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() exit.");
+        logger.debug("findAllBotEvents() exit.");
         return Response.status(200).entity(list).build();
     }
 
     @Override
     public Response findBotEvents(long botId) {
-        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() entry.");
+        logger.debug("findBotEvents() entry.");
 
         List<AiPlayerbotRandomBotsDTO> list = new ArrayList<>();
         for(AiPlayerbotRandomBots event : playerBotController.getBotListEvents(botId)) {
             list.add(eventsMapper.botToDTO(event));
         }
 
-        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() exit.");
+        logger.debug("findBotEvents() exit.");
         return Response.status(200).entity(list).build();
     }
 
     @Override
+    public Response getMaxBotCount() {
+        logger.debug("getMaxBotCount() entry.");
+
+        Long max = playerBotController.getMaxAllowedBotCount();
+
+        logger.debug("getMaxBotCount() exit.");
+
+        return Response.status(200).entity(max).build();
+    }
+
+    @Override
     public Response resetAllBotEvents() {
-        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() entry.");
+        logger.debug("resetAllBotEvents() entry.");
 
         playerBotController.reset();
 
-        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() exit.");
+        logger.debug("resetAllBotEvents() exit.");
 
         return Response.status(200).build();
     }
