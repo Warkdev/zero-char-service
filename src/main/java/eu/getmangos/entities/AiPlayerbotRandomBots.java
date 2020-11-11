@@ -8,7 +8,9 @@ import lombok.Data;
 @Table(name = "ai_playerbot_random_bots")
 @NamedQueries({
     @NamedQuery(name = "AiPlayerbotRandomBots.findAll", query = "SELECT a FROM AiPlayerbotRandomBots a"),
-    @NamedQuery(name = "AiPlayerbotRandomBots.findEventValue", query = "SELECT a FROM AiPlayerbotRandomBots WHERE a.owner = :owner AND a.bot = :bot AND event = :event")
+    @NamedQuery(name = "AiPlayerbotRandomBots.findBotEvents", query = "SELECT a FROM AiPlayerbotRandomBots WHERE a.owner = :owner AND a.bot = :bot"),
+    @NamedQuery(name = "AiPlayerbotRandomBots.findEventValue", query = "SELECT a FROM AiPlayerbotRandomBots WHERE a.owner = :owner AND a.bot = :bot AND event = :event"),
+    @NamedQuery(name = "AiPlayerbotRandomBots.reset", query = "DELETE FROM AiPlayerbotRandomBots")
     })
 public class AiPlayerbotRandomBots {
 

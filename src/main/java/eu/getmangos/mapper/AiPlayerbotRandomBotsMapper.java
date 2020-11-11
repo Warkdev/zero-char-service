@@ -14,7 +14,7 @@ public interface AiPlayerbotRandomBotsMapper {
     AiPlayerbotRandomBots dtoToEntity(AiPlayerbotRandomBotsDTO dto);
 
     default boolean map(Long value) {
-        return value == 1;
+        return value != 0;
     }
 
     default Long map(boolean value) {
