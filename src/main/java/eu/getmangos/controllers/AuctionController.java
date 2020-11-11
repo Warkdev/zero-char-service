@@ -48,8 +48,12 @@ public class AuctionController {
     public void update(Auction auction) throws DAOException {
         logger.debug("update() entry.");
 
+        if(find(auction.getId()) == null) {
+            throw new DAOException("Entity does not exist");
+        }
+
         try {
-            em.persist(auction);
+            em.merge(auction);
         } catch (Exception e) {
             logger.debug("Exception raised while updating the auction: "+e.getMessage());
             throw new DAOException("Error while updating the auction.");
