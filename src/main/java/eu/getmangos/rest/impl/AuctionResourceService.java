@@ -33,6 +33,18 @@ public class AuctionResourceService implements AuctionResource {
     public Response findAll(Integer page, Integer pageSize) {
         logger.debug("findAll() entry.");
 
+        if(page == null) {
+            page = 1;
+        }
+
+        if(pageSize == null) {
+            pageSize = 20;
+        }
+
+        if(pageSize > 100) {
+            pageSize = 100;
+        }
+
         List<AuctionDTO> list = new ArrayList<>();
 
         for(Auction auction : auctionController.findAll(page, pageSize)) {
@@ -59,10 +71,22 @@ public class AuctionResourceService implements AuctionResource {
     }
 
     @Override
-    public Response findForAuctionHouse(int houseId, int page, int pageSize) {
+    public Response findForAuctionHouse(int houseId, Integer page, Integer pageSize) {
         logger.debug("findForAuctionHouse() entry.");
 
         List<AuctionDTO> list = new ArrayList<>();
+
+        if(page == null) {
+            page = 1;
+        }
+
+        if(pageSize == null) {
+            pageSize = 20;
+        }
+
+        if(pageSize > 100) {
+            pageSize = 100;
+        }
 
         try {
             for(Auction auction : auctionController.findForAuctionHouse(houseId, page, pageSize)) {
@@ -79,8 +103,20 @@ public class AuctionResourceService implements AuctionResource {
     }
 
     @Override
-    public Response findForOwner(int ownerId, int page, int pageSize) {
+    public Response findForOwner(int ownerId, Integer page, Integer pageSize) {
         logger.debug("findForOwner() entry.");
+
+        if(page == null) {
+            page = 1;
+        }
+
+        if(pageSize == null) {
+            pageSize = 20;
+        }
+
+        if(pageSize > 100) {
+            pageSize = 100;
+        }
 
         List<AuctionDTO> list = new ArrayList<>();
 

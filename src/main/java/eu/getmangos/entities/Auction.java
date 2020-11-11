@@ -11,17 +11,8 @@ import lombok.Data;
     @NamedQuery(name = "Auction.findById", query = "SELECT a FROM Auction a WHERE a.id = :id"),
     @NamedQuery(name = "Auction.deleteAuction", query = "DELETE FROM Auction a WHERE a.id = :id"),
     @NamedQuery(name = "Auction.findByHouseid", query = "SELECT a FROM Auction a WHERE a.houseid = :houseid"),
-    @NamedQuery(name = "Auction.findByItemguid", query = "SELECT a FROM Auction a WHERE a.itemguid = :itemguid"),
-    @NamedQuery(name = "Auction.findByItemTemplate", query = "SELECT a FROM Auction a WHERE a.itemTemplate = :itemTemplate"),
-    @NamedQuery(name = "Auction.findByItemCount", query = "SELECT a FROM Auction a WHERE a.itemCount = :itemCount"),
-    @NamedQuery(name = "Auction.findByItemRandompropertyid", query = "SELECT a FROM Auction a WHERE a.itemRandompropertyid = :itemRandompropertyid"),
-    @NamedQuery(name = "Auction.findByItemowner", query = "SELECT a FROM Auction a WHERE a.itemowner = :itemowner"),
-    @NamedQuery(name = "Auction.findByBuyoutprice", query = "SELECT a FROM Auction a WHERE a.buyoutprice = :buyoutprice"),
-    @NamedQuery(name = "Auction.findByTime", query = "SELECT a FROM Auction a WHERE a.time = :time"),
-    @NamedQuery(name = "Auction.findByBuyguid", query = "SELECT a FROM Auction a WHERE a.buyguid = :buyguid"),
-    @NamedQuery(name = "Auction.findByLastbid", query = "SELECT a FROM Auction a WHERE a.lastbid = :lastbid"),
-    @NamedQuery(name = "Auction.findByStartbid", query = "SELECT a FROM Auction a WHERE a.startbid = :startbid"),
-    @NamedQuery(name = "Auction.findByDeposit", query = "SELECT a FROM Auction a WHERE a.deposit = :deposit")})
+    @NamedQuery(name = "Auction.findByItemowner", query = "SELECT a FROM Auction a WHERE a.itemowner = :itemowner")
+})
 public class Auction {
 
   /**

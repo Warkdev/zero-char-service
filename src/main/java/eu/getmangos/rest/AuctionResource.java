@@ -74,7 +74,7 @@ public interface AuctionResource {
             @APIResponse(responseCode = "500", description = "An unexpected event occured")
         }
     )
-    public Response findForAuctionHouse(@PathParam("auction_house_id") int houseId, @QueryParam("page") int page, @QueryParam("page_size") int pageSize);
+    public Response findForAuctionHouse(@PathParam("auction_house_id") int houseId, @QueryParam("page") Integer page, @QueryParam("page_size") Integer pageSize);
 
     @GET
     @Path("/owner/{owner_id}")
@@ -92,7 +92,7 @@ public interface AuctionResource {
             @APIResponse(responseCode = "500", description = "An unexpected event occured")
         }
     )
-    public Response findForOwner(@PathParam("owner_id") int ownerId, @QueryParam("page") int page, @QueryParam("page_size") int pageSize);
+    public Response findForOwner(@PathParam("owner_id") int ownerId, @QueryParam("page") Integer page, @QueryParam("page_size") Integer pageSize);
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
