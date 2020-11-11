@@ -30,8 +30,8 @@ public class AuctionResourceService implements AuctionResource {
     @Inject private AuctionMapper auctionMapper;
 
     @Override
-    public Response findAll(Integer page, Integer pageSize) {
-        logger.debug("findAll() entry.");
+    public Response findAllAuctions(Integer page, Integer pageSize) {
+        logger.debug("findAllAuctions() entry.");
 
         if(page == null) {
             page = 1;
@@ -51,7 +51,7 @@ public class AuctionResourceService implements AuctionResource {
             list.add(auctionMapper.auctionToDTO(auction));
         }
 
-        logger.debug("findAll() exit.");
+        logger.debug("findAllAuctions() exit.");
 
         return Response.status(200).entity(list).build();
     }

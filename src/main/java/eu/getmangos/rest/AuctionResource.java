@@ -37,7 +37,7 @@ public interface AuctionResource {
             @APIResponse(responseCode = "500", description = "An unexpected event occured")
         }
     )
-    public Response findAll(@QueryParam("page") Integer page, @QueryParam("page_size") Integer pageSize);
+    public Response findAllAuctions(@QueryParam("page") Integer page, @QueryParam("page_size") Integer pageSize);
 
     @GET
     @Path("/{id}")
