@@ -88,6 +88,8 @@ public class BugreportResourceService implements BugreportResource {
     @Override
     public Response updateBugreport(Integer auctionId, BugReportDTO entity) {
         try {
+            Bugreport report = reportMapper.map(entity);
+            report.setId(auctionId);
             this.reportController.update(reportMapper.map(entity));
         } catch (DAOException daoEx) {
                 return Response.status(400).entity(daoEx.getMessage()).build();
