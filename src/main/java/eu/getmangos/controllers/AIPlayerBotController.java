@@ -1,6 +1,5 @@
 package eu.getmangos.controllers;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -9,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
 
@@ -31,14 +31,14 @@ public class AIPlayerBotController {
      */
     @SuppressWarnings("unchecked")
     public List<AiPlayerbotNames> getBotNames(int page, int pageSize) {
-        logger.debug("getBotNames() entry.");
+        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() entry.");
 
         List<AiPlayerbotNames> listBotNames = em.createNamedQuery("AiPlayerbotNames.findAll")
                                                 .setFirstResult((page - 1) * pageSize)
                                                 .setMaxResults(pageSize)
                                                 .getResultList();
 
-        logger.debug("getBotNames() exit.");
+        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() exit.");
 
         return listBotNames;
     }
@@ -51,14 +51,14 @@ public class AIPlayerBotController {
      */
     @SuppressWarnings("unchecked")
     public List<AiPlayerbotRandomBots> getRandomBots(int page, int pageSize) {
-        logger.debug("getRandomBots() entry.");
+        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() entry.");
 
         List<AiPlayerbotRandomBots> listBots = em.createNamedQuery("AiPlayerbotRandomBots.findAll")
                                                 .setFirstResult((page - 1) * pageSize)
                                                 .setMaxResults(pageSize)
                                                 .getResultList();
 
-        logger.debug("getRandomBots() exit.");
+        logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() exit.");
 
         return listBots;
     }
@@ -105,6 +105,7 @@ public class AIPlayerBotController {
     /**
      * Reset the AI Player Bot System.
      */
+    @Transactional
     public void reset() {
         logger.debug(Thread.currentThread().getStackTrace()[0].getMethodName()+ "() entry.");
 
