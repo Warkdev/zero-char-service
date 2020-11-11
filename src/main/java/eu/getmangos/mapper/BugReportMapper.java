@@ -8,7 +8,7 @@ import eu.getmangos.entities.Bugreport;
 @Mapper(componentModel = "cdi")
 public interface BugReportMapper {
 
-    BugReportDTO map(Bugreport auction);
+    BugReportDTO map(Bugreport report);
 
     Bugreport map(BugReportDTO dto);
 }
