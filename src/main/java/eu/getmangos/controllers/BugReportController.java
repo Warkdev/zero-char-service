@@ -47,6 +47,7 @@ public class BugReportController {
     @Transactional
     public void update(Bugreport report) throws DAOException {
         logger.debug("update() entry.");
+        logger.debug(report.toString());
 
         Bugreport exist = find(report.getId());
 

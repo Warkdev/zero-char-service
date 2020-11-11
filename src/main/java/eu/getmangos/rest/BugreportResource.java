@@ -86,7 +86,7 @@ public interface BugreportResource {
             @APIResponse(responseCode = "500", description = "An unexpected event occured")
         }
     )
-    public Response updateBugreport(@PathParam("id") Integer auctionId, BugReportDTO entity);
+    public Response updateBugreport(@PathParam("id") Integer reportId, BugReportDTO entity);
 
     @DELETE
     @Path("{id}")
