@@ -72,6 +72,23 @@ public interface InstanceResource {
     public Response updateCreatureRespawnTimer(@PathParam("instance_id") Integer instanceId, @PathParam("guid") Integer guid, CreatureRespawnDTO entity);
 
     @DELETE
+    @Path("/{instance_id}/creature_respawn")
+    @Operation(summary = "Delete all creature respawn timer for the given instance",
+        description = "This API is deleting all existing creature respawn timers for the given instance ID."
+    )
+    @APIResponses(
+        value = {
+            @APIResponse(responseCode = "204", description = "The creature respawn timers has been deleted", content = @Content(
+                        mediaType = "application/json"
+                )
+            ),
+            @APIResponse(responseCode = "400", description = "Error with the request"),
+            @APIResponse(responseCode = "500", description = "An unexpected even occured")
+        }
+    )
+    public Response deleteAllCreatureRespawnTimer(@PathParam("instance_id") Integer instanceId);
+
+    @DELETE
     @Path("/{instance_id}/creature_respawn/{guid}")
     @Operation(summary = "Delete a creature respawn timer",
         description = "This API is deleting an existing creature respawn timer based on the provided id."

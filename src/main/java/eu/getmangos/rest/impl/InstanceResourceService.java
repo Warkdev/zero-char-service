@@ -30,6 +30,9 @@ public class InstanceResourceService implements InstanceResource {
     @Inject private CreatureRespawnMapper creatureMapper;
 
     @Override
+    @Tag(name = "creature")
+    @Tag(name = "respawn")
+    @Tag(name = "instance")
     public Response findAllCreatureRespawn(Integer instanceId, Integer page, Integer pageSize) {
         logger.debug("findAllCreatureRespawn() entry.");
 
@@ -61,6 +64,9 @@ public class InstanceResourceService implements InstanceResource {
     }
 
     @Override
+    @Tag(name = "creature")
+    @Tag(name = "respawn")
+    @Tag(name = "instance")
     public Response createCreatureRespawn(Integer instanceId, CreatureRespawnDTO entity) {
         try {
             entity.setInstance(instanceId);
@@ -74,6 +80,9 @@ public class InstanceResourceService implements InstanceResource {
     }
 
     @Override
+    @Tag(name = "creature")
+    @Tag(name = "respawn")
+    @Tag(name = "instance")
     public Response updateCreatureRespawnTimer(Integer instanceId, Integer guid, CreatureRespawnDTO entity) {
         try {
             entity.setGuid(guid);
@@ -88,9 +97,27 @@ public class InstanceResourceService implements InstanceResource {
     }
 
     @Override
+    @Tag(name = "creature")
+    @Tag(name = "respawn")
+    @Tag(name = "instance")
     public Response deleteCreatureRespawnTimer(Integer instanceId, Integer guid) {
         try {
             this.creatureRespawnController.delete(instanceId, guid);
+        } catch (DAOException daoEx) {
+                return Response.status(400).entity(daoEx.getMessage()).build();
+        } catch (Exception ex) {
+                return Response.status(500).entity(ex.getMessage()).build();
+        }
+        return Response.status(204).build();
+    }
+
+    @Override
+    @Tag(name = "creature")
+    @Tag(name = "respawn")
+    @Tag(name = "instance")
+    public Response deleteAllCreatureRespawnTimer(Integer instanceId) {
+        try {
+            this.creatureRespawnController.deleteAllByInstance(instanceId);
         } catch (DAOException daoEx) {
                 return Response.status(400).entity(daoEx.getMessage()).build();
         } catch (Exception ex) {
