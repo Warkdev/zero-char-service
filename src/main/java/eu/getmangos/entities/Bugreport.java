@@ -11,7 +11,9 @@ import lombok.Data;
 @Table(name = "bugreport")
 @NamedQueries({
     @NamedQuery(name = "Bugreport.findAll", query = "SELECT b FROM Bugreport b"),
-    @NamedQuery(name = "Bugreport.findById", query = "SELECT b FROM Bugreport b WHERE b.id = :id")})
+    @NamedQuery(name = "Bugreport.findById", query = "SELECT b FROM Bugreport b WHERE b.id = :id"),
+    @NamedQuery(name = "Bugreport.delete", query = "DELETE FROM Bugreport b WHERE b.id = :id")
+})
 public class Bugreport {
 
   /**
