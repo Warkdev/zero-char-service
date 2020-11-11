@@ -81,6 +81,7 @@ public class BugReportController {
             Bugreport report = em.createNamedQuery("Bugreport.findById", Bugreport.class).setParameter("id", id).getSingleResult();
             return report;
         } catch (NoResultException nre) {
+            logger.debug("No result received for entity with id "+id);
             return null;
         } finally {
             logger.debug("find() exit.");
