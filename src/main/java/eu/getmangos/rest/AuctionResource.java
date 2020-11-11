@@ -95,6 +95,7 @@ public interface AuctionResource {
     public Response findForOwner(@PathParam("owner_id") int ownerId, @QueryParam("page") Integer page, @QueryParam("page_size") Integer pageSize);
 
     @POST
+    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Creates an auction within the database.",
         description = "This API is creating a new auction within the database."

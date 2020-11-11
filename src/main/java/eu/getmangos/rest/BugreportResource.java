@@ -59,6 +59,7 @@ public interface BugreportResource {
     public Response findBugreport(@PathParam("id") int id);
 
     @POST
+    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Creates a bug report within the database.",
         description = "This API is creating a new bug report within the database."
