@@ -12,9 +12,13 @@ import lombok.Data;
 @Table(name = "creature_respawn")
 @NamedQueries({
     @NamedQuery(name = "CreatureRespawn.findAll", query = "SELECT c FROM CreatureRespawn c"),
+    @NamedQuery(name = "CreatureRespawn.findById", query = "SELECT c FROM CreatureRespawn c WHERE c.creatureRespawnPK.guid = :guid AND c.creatureRespawnPK.instance = :instance"),
+    @NamedQuery(name = "CreatureRespawn.delete", query = "DELETE FROM CreatureRespawn c WHERE c.creatureRespawnPK.guid = :guid AND c.creatureRespawnPK.instance = :instance"),
     @NamedQuery(name = "CreatureRespawn.findByGuid", query = "SELECT c FROM CreatureRespawn c WHERE c.creatureRespawnPK.guid = :guid"),
     @NamedQuery(name = "CreatureRespawn.findByRespawntime", query = "SELECT c FROM CreatureRespawn c WHERE c.respawntime = :respawntime"),
-    @NamedQuery(name = "CreatureRespawn.findByInstance", query = "SELECT c FROM CreatureRespawn c WHERE c.creatureRespawnPK.instance = :instance")})
+    @NamedQuery(name = "CreatureRespawn.findByInstance", query = "SELECT c FROM CreatureRespawn c WHERE c.creatureRespawnPK.instance = :instance"),
+    @NamedQuery(name = "CreatureRespawn.deleteByInstance", query = "DELETE FROM CreatureRespawn c WHERE c.creatureRespawnPK.instance = :instance")
+})
 public class CreatureRespawn {
     @Data @Embeddable
     public static class CreatureRespawnPK implements Serializable {
