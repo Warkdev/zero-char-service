@@ -9,6 +9,7 @@ import lombok.Data;
 @NamedQueries({
     @NamedQuery(name = "Auction.findAll", query = "SELECT a FROM Auction a"),
     @NamedQuery(name = "Auction.findById", query = "SELECT a FROM Auction a WHERE a.id = :id"),
+    @NamedQuery(name = "Auction.deleteAuction", query = "DELETE FROM Auction a WHERE a.id = :id"),
     @NamedQuery(name = "Auction.findByHouseid", query = "SELECT a FROM Auction a WHERE a.houseid = :houseid"),
     @NamedQuery(name = "Auction.findByItemguid", query = "SELECT a FROM Auction a WHERE a.itemguid = :itemguid"),
     @NamedQuery(name = "Auction.findByItemTemplate", query = "SELECT a FROM Auction a WHERE a.itemTemplate = :itemTemplate"),
