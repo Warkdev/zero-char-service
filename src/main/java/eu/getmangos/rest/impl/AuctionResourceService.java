@@ -30,8 +30,8 @@ public class AuctionResourceService implements AuctionResource {
     @Inject private AuctionMapper auctionMapper;
 
     @Override
-    public Response findAll(Integer page, Integer pageSize) {
-        logger.debug("findAll() entry.");
+    public Response findAllAuctions(Integer page, Integer pageSize) {
+        logger.debug("findAllAuctions() entry.");
 
         if(page == null) {
             page = 1;
@@ -51,7 +51,7 @@ public class AuctionResourceService implements AuctionResource {
             list.add(auctionMapper.auctionToDTO(auction));
         }
 
-        logger.debug("findAll() exit.");
+        logger.debug("findAllAuctions() exit.");
 
         return Response.status(200).entity(list).build();
     }
@@ -149,7 +149,9 @@ public class AuctionResourceService implements AuctionResource {
     @Override
     public Response updateAuction(Integer auctionId, AuctionDTO entity) {
         try {
-            this.auctionController.update(auctionMapper.dtoToEntity(entity));
+            Auction auction = auctionMapper.dtoToEntity(entity);
+            auction.setId(auctionId);
+            this.auctionController.update(auction);
         } catch (DAOException daoEx) {
                 return Response.status(400).entity(daoEx.getMessage()).build();
         } catch (Exception ex) {
