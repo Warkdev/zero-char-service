@@ -73,7 +73,7 @@ public class InstanceResourceService implements InstanceResource {
         CreatureRespawn entity = null;
 
         try {
-            entity = creatureRespawnController.find(instanceId, guid);
+            entity = creatureRespawnController.find(guid, instanceId);
         } catch (DAOException dao) {
             logger.debug("Error while retrieving the timer "+dao.getMessage());
             return Response.status(500).build();
