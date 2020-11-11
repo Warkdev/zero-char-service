@@ -1,7 +1,5 @@
 package eu.getmangos.mapper;
 
-import java.util.Date;
-
 import org.mapstruct.Mapper;
 
 import eu.getmangos.dto.BugReportDTO;
