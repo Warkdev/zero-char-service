@@ -30,8 +30,8 @@ public class BugreportResourceService implements BugreportResource {
     @Inject private BugReportMapper reportMapper;
 
     @Override
-    public Response findAll(Integer page, Integer pageSize) {
-        logger.debug("findAll() entry.");
+    public Response findAllBugreport(Integer page, Integer pageSize) {
+        logger.debug("findAllBugreport() entry.");
 
         if(page == null) {
             page = 1;
@@ -51,7 +51,7 @@ public class BugreportResourceService implements BugreportResource {
             list.add(reportMapper.map(report));
         }
 
-        logger.debug("findAll() exit.");
+        logger.debug("findAllBugreport() exit.");
 
         return Response.status(200).entity(list).build();
     }
