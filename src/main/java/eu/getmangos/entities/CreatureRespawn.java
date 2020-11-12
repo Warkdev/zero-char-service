@@ -23,7 +23,7 @@ public class CreatureRespawn {
     @Data @Embeddable
     public static class CreatureRespawnPK implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+        private static final long serialVersionUID = 1L;
         /**
          * Global Unique Identifier
          */

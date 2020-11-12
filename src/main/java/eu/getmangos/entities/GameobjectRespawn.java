@@ -1,7 +1,6 @@
 package eu.getmangos.entities;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
 import lombok.Data;
 
@@ -23,22 +22,16 @@ import lombok.Data;
 public class GameobjectRespawn {
   @Data @Embeddable
   public static class GameobjectRespawnPK implements Serializable {
-    /**
-     *
-    */
-    private static final long serialVersionUID = 1L;
 
+    private static final long serialVersionUID = 1L;
     /**
      * Global unique ID of the game object.
     */
-    @Id
     @Column(name = "guid", nullable = false)
     private Integer guid;
-
     /**
      * Instance ID that the game object will spawn in.
      */
-    @Id
     @Column(name = "instance", nullable = false)
     private Integer instance;
   }
