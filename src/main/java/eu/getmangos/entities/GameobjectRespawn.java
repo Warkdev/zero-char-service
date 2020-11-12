@@ -23,9 +23,14 @@ import lombok.Data;
 public class GameobjectRespawn {
   @Data @Embeddable
   public static class GameobjectRespawnPK implements Serializable {
-      /**
+    /**
+     *
+    */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Global unique ID of the game object.
-     */
+    */
     @Id
     @Column(name = "guid", nullable = false)
     private Integer guid;

@@ -19,6 +19,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
 import eu.getmangos.dto.CreatureRespawnDTO;
+import eu.getmangos.dto.GameobjectRespawnDTO;
 
 public interface InstanceResource {
 
@@ -123,4 +124,106 @@ public interface InstanceResource {
         }
     )
     public Response deleteCreatureRespawnTimer(@PathParam("instance_id") Integer instanceId, @PathParam("guid") Integer guid);
+
+    @GET
+    @Path("/{instance_id}/gameobject_respawn")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Retrieves a list of gameobject respawn timers for the given instance from the database.",
+        description = "This API is returning a list of gameobject respawn timers from the database. A missing page and page size will return the first 20 results."
+    )
+    @APIResponses(
+        value = {
+            @APIResponse(responseCode = "200", description = "A list of gameobject respawn timers", content = @Content(
+                        mediaType = "application/json", schema = @Schema(implementation = GameobjectRespawnDTO.class)
+                )
+            ),
+            @APIResponse(responseCode = "400", description = "Error with the request"),
+            @APIResponse(responseCode = "500", description = "An unexpected event occured")
+        }
+    )
+    public Response findAllGameobjectRespawn(@PathParam("instance_id") Integer instanceId, @QueryParam("page") Integer page, @QueryParam("page_size") Integer pageSize);
+
+    @GET
+    @Path("/{instance_id}/gameobject_respawn/{guid}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Retrieves a specific gameobject respawn timer for the given instance from the database.",
+        description = "This API is returning a specific gameobject respawn timer from the database."
+    )
+    @APIResponses(
+        value = {
+            @APIResponse(responseCode = "200", description = "A list of gameobject respawn timers", content = @Content(
+                        mediaType = "application/json", schema = @Schema(implementation = GameobjectRespawnDTO.class)
+                )
+            ),
+            @APIResponse(responseCode = "400", description = "Error with the request"),
+            @APIResponse(responseCode = "404", description = "Timer not found"),
+            @APIResponse(responseCode = "500", description = "An unexpected event occured")
+        }
+    )
+    public Response findGameobjectRespawn(@PathParam("instance_id") Integer instanceId, @PathParam("guid") Integer guid);
+
+    @POST
+    @Path("/{instance_id}/gameobject_respawn")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Creates a new gameobject respawn timer within the database for the given instance.",
+        description = "This API is creating a new gameobject respawn timer within the database."
+    )
+    @APIResponses(
+        value = {
+            @APIResponse(responseCode = "201", description = "The respawn timer has been created"),
+            @APIResponse(responseCode = "400", description = "Error with the request"),
+            @APIResponse(responseCode = "500", description = "An unexpected event occured")
+        }
+    )
+    public Response createGameobjectRespawn(@PathParam("instance_id") Integer instanceId, GameobjectRespawnDTO entity);
+
+    @PUT
+    @Path("/{instance_id}/gameobject_respawn/{guid}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Updates a gameobject respawn timer within the database.",
+        description = "This API is updating a gameobject respawn timer within the database."
+    )
+    @APIResponses(
+        value = {
+            @APIResponse(responseCode = "200", description = "The gameobject respawn timer has been created"),
+            @APIResponse(responseCode = "400", description = "Error with the request"),
+            @APIResponse(responseCode = "500", description = "An unexpected event occured")
+        }
+    )
+    public Response updateGameobjectRespawnTimer(@PathParam("instance_id") Integer instanceId, @PathParam("guid") Integer guid, GameobjectRespawnDTO entity);
+
+    @DELETE
+    @Path("/{instance_id}/gameobject_respawn")
+    @Operation(summary = "Delete all gameobject respawn timer for the given instance",
+        description = "This API is deleting all existing gameobject respawn timers for the given instance ID."
+    )
+    @APIResponses(
+        value = {
+            @APIResponse(responseCode = "204", description = "The gameobject respawn timers has been deleted", content = @Content(
+                        mediaType = "application/json"
+                )
+            ),
+            @APIResponse(responseCode = "400", description = "Error with the request"),
+            @APIResponse(responseCode = "500", description = "An unexpected even occured")
+        }
+    )
+    public Response deleteAllGameobjectRespawnTimer(@PathParam("instance_id") Integer instanceId);
+
+    @DELETE
+    @Path("/{instance_id}/gameobject_respawn/{guid}")
+    @Operation(summary = "Delete a gameobject respawn timer",
+        description = "This API is deleting an existing gameobject respawn timer based on the provided id."
+    )
+    @APIResponses(
+        value = {
+            @APIResponse(responseCode = "204", description = "The gameobject respawn timer has been deleted", content = @Content(
+                        mediaType = "application/json"
+                )
+            ),
+            @APIResponse(responseCode = "400", description = "Error with the request"),
+            @APIResponse(responseCode = "500", description = "An unexpected even occured")
+        }
+    )
+    public Response deleteGameobjectRespawnTimer(@PathParam("instance_id") Integer instanceId, @PathParam("guid") Integer guid);
 }
