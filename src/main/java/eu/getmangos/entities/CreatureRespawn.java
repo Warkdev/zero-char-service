@@ -30,8 +30,8 @@ public class CreatureRespawn {
         @Column(name = "guid", nullable = false)
         private Integer guid;
         /**
-     * Instance ID of the instance the creature is respawning into.
-     */
+         * Instance ID of the instance the creature is respawning into.
+         */
         @Column(name = "instance", nullable = false)
         private Integer instance;
     }
