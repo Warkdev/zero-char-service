@@ -20,8 +20,127 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
 import eu.getmangos.dto.CreatureRespawnDTO;
 import eu.getmangos.dto.GameobjectRespawnDTO;
+import eu.getmangos.dto.InstanceDTO;
+import eu.getmangos.entities.Instance;
 
 public interface InstanceResource {
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Retrieves a list of instances from the database.",
+        description = "This API is returning a list of instances from the database. A missing page and page size will return the first 20 results."
+    )
+    @APIResponses(
+        value = {
+            @APIResponse(responseCode = "200", description = "A list of instances", content = @Content(
+                        mediaType = "application/json", schema = @Schema(implementation = InstanceDTO.class)
+                )
+            ),
+            @APIResponse(responseCode = "400", description = "Error with the request"),
+            @APIResponse(responseCode = "500", description = "An unexpected event occured")
+        }
+    )
+    public Response findAllInstances(@QueryParam("page") Integer page, @QueryParam("page_size") Integer pageSize);
+
+    @GET
+    @Path("/{instance_id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Retrieves a list of instances from the database.",
+        description = "This API is returning a list of instances from the database. A missing page and page size will return the first 20 results."
+    )
+    @APIResponses(
+        value = {
+            @APIResponse(responseCode = "200", description = "A list of instances", content = @Content(
+                        mediaType = "application/json", schema = @Schema(implementation = InstanceDTO.class)
+                )
+            ),
+            @APIResponse(responseCode = "400", description = "Error with the request"),
+            @APIResponse(responseCode = "500", description = "An unexpected event occured")
+        }
+    )
+    public Response findInstance(@PathParam("instance_id") Integer instanceId, @QueryParam("page") Integer page, @QueryParam("page_size") Integer pageSize);
+
+    @GET
+    @Path("/map/{map_id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Retrieves a list of instances for a given Map ID from the database.",
+        description = "This API is returning a list of instances from the database matching the given Map ID. A missing page and page size will return the first 20 results."
+    )
+    @APIResponses(
+        value = {
+            @APIResponse(responseCode = "200", description = "A list of instances matching the map", content = @Content(
+                        mediaType = "application/json", schema = @Schema(implementation = InstanceDTO.class)
+                )
+            ),
+            @APIResponse(responseCode = "400", description = "Error with the request"),
+            @APIResponse(responseCode = "500", description = "An unexpected event occured")
+        }
+    )
+    public Response findAllInstancesByMap(@PathParam("map_id") Integer map, @QueryParam("page") Integer page, @QueryParam("page_size") Integer pageSize);
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Creates a new instance within the database.",
+        description = "This API is creating a new instance within the database."
+    )
+    @APIResponses(
+        value = {
+            @APIResponse(responseCode = "201", description = "The instance has been created"),
+            @APIResponse(responseCode = "400", description = "Error with the request"),
+            @APIResponse(responseCode = "500", description = "An unexpected event occured")
+        }
+    )
+    public Response createInstance(InstanceDTO entity);
+
+    @PUT
+    @Path("/{instance_id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Updates an instance within the database.",
+        description = "This API is updating an instance within the database."
+    )
+    @APIResponses(
+        value = {
+            @APIResponse(responseCode = "200", description = "The instance has been updated"),
+            @APIResponse(responseCode = "400", description = "Error with the request"),
+            @APIResponse(responseCode = "500", description = "An unexpected event occured")
+        }
+    )
+    public Response updateInstance(@PathParam("instance_id") Integer instanceId, InstanceDTO entity);
+
+    @DELETE
+    @Path("/{instance_id}")
+    @Operation(summary = "Delete an instance from the database",
+        description = "This API is deleting an existing instance based on the provided id."
+    )
+    @APIResponses(
+        value = {
+            @APIResponse(responseCode = "204", description = "The instance has been deleted", content = @Content(
+                        mediaType = "application/json"
+                )
+            ),
+            @APIResponse(responseCode = "400", description = "Error with the request"),
+            @APIResponse(responseCode = "500", description = "An unexpected even occured")
+        }
+    )
+    public Response deleteInstance(@PathParam("instance_id") Integer instanceId);
+
+    @PUT
+    @Path("/pack")
+    @Operation(summary = "Pack instances within the database",
+        description = "This API is packing all instances, reducing their ID and starting at 1."
+    )
+    @APIResponses(
+        value = {
+            @APIResponse(responseCode = "200", description = "The instances have been packed", content = @Content(
+                        mediaType = "application/json"
+                )
+            ),
+            @APIResponse(responseCode = "400", description = "Error with the request"),
+            @APIResponse(responseCode = "500", description = "An unexpected even occured")
+        }
+    )
+    public Response packInstances();
 
     @GET
     @Path("/{instance_id}/creature_respawn")
@@ -84,7 +203,7 @@ public interface InstanceResource {
     )
     @APIResponses(
         value = {
-            @APIResponse(responseCode = "200", description = "The creature respawn timer has been created"),
+            @APIResponse(responseCode = "200", description = "The creature respawn timer has been updated"),
             @APIResponse(responseCode = "400", description = "Error with the request"),
             @APIResponse(responseCode = "500", description = "An unexpected event occured")
         }
@@ -186,7 +305,7 @@ public interface InstanceResource {
     )
     @APIResponses(
         value = {
-            @APIResponse(responseCode = "200", description = "The gameobject respawn timer has been created"),
+            @APIResponse(responseCode = "200", description = "The gameobject respawn timer has been updated"),
             @APIResponse(responseCode = "400", description = "Error with the request"),
             @APIResponse(responseCode = "500", description = "An unexpected event occured")
         }
@@ -226,4 +345,5 @@ public interface InstanceResource {
         }
     )
     public Response deleteGameobjectRespawnTimer(@PathParam("instance_id") Integer instanceId, @PathParam("guid") Integer guid);
+
 }
