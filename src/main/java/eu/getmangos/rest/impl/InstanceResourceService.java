@@ -76,7 +76,7 @@ public class InstanceResourceService implements InstanceResource {
 
     @Override
     @Tag(name = "instance")
-    public Response findInstance(Integer instanceId, Integer page, Integer pageSize) {
+    public Response findInstance(Integer instanceId) {
         logger.debug("findInstance() entry.");
 
         Instance entity = null;

@@ -45,12 +45,12 @@ public interface InstanceResource {
     @GET
     @Path("/{instance_id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Retrieves a list of instances from the database.",
-        description = "This API is returning a list of instances from the database. A missing page and page size will return the first 20 results."
+    @Operation(summary = "Retrieves an instance from the database.",
+        description = "This API is returning an instance from the database matching the given ID. A missing page and page size will return the first 20 results."
     )
     @APIResponses(
         value = {
-            @APIResponse(responseCode = "200", description = "A list of instances", content = @Content(
+            @APIResponse(responseCode = "200", description = "The matching instance", content = @Content(
                         mediaType = "application/json", schema = @Schema(implementation = InstanceDTO.class)
                 )
             ),
@@ -58,7 +58,7 @@ public interface InstanceResource {
             @APIResponse(responseCode = "500", description = "An unexpected event occured")
         }
     )
-    public Response findInstance(@PathParam("instance_id") Integer instanceId, @QueryParam("page") Integer page, @QueryParam("page_size") Integer pageSize);
+    public Response findInstance(@PathParam("instance_id") Integer instanceId);
 
     @GET
     @Path("/map/{map_id}")
