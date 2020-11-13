@@ -14,6 +14,7 @@ import lombok.Data;
     @NamedQuery(name = "CreatureRespawn.findAll", query = "SELECT c FROM CreatureRespawn c"),
     @NamedQuery(name = "CreatureRespawn.findById", query = "SELECT c FROM CreatureRespawn c WHERE c.creatureRespawnPK.guid = :guid AND c.creatureRespawnPK.instance = :instance"),
     @NamedQuery(name = "CreatureRespawn.delete", query = "DELETE FROM CreatureRespawn c WHERE c.creatureRespawnPK.guid = :guid AND c.creatureRespawnPK.instance = :instance"),
+    @NamedQuery(name = "CreatureRespawn.pack", query = "UPDATE CreatureRespawn c SET c.creatureRespawnPK.instance = :newinstance WHERE c.creatureRespawnPK.instance = :instance"),
     @NamedQuery(name = "CreatureRespawn.findByGuid", query = "SELECT c FROM CreatureRespawn c WHERE c.creatureRespawnPK.guid = :guid"),
     @NamedQuery(name = "CreatureRespawn.findByRespawntime", query = "SELECT c FROM CreatureRespawn c WHERE c.respawntime = :respawntime"),
     @NamedQuery(name = "CreatureRespawn.findByInstance", query = "SELECT c FROM CreatureRespawn c WHERE c.creatureRespawnPK.instance = :instance"),

@@ -10,8 +10,11 @@ import lombok.Data;
 @NamedQueries({
     @NamedQuery(name = "Instance.findAll", query = "SELECT i FROM Instance i"),
     @NamedQuery(name = "Instance.findById", query = "SELECT i FROM Instance i WHERE i.id = :id"),
+    @NamedQuery(name = "Instance.delete", query = "DELETE FROM Instance i WHERE i.id = :id"),
+    @NamedQuery(name = "Instance.pack", query = "UPDATE Instance i SET i.id = :newid WHERE i.id = :id"),
     @NamedQuery(name = "Instance.findByMap", query = "SELECT i FROM Instance i WHERE i.map = :map"),
-    @NamedQuery(name = "Instance.findByResettime", query = "SELECT i FROM Instance i WHERE i.resettime = :resettime")})
+    @NamedQuery(name = "Instance.findByResettime", query = "SELECT i FROM Instance i WHERE i.resettime = :resettime"),
+})
 public class Instance {
 
   /**
