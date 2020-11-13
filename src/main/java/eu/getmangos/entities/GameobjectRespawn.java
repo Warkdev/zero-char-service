@@ -13,6 +13,7 @@ import lombok.Data;
 @NamedQueries({
     @NamedQuery(name = "GameobjectRespawn.findAll", query = "SELECT g FROM GameobjectRespawn g"),
     @NamedQuery(name = "GameobjectRespawn.findById", query = "SELECT g FROM GameobjectRespawn g WHERE g.gameobjectRespawnPK.guid = :guid AND g.gameobjectRespawnPK.instance = :instance"),
+    @NamedQuery(name = "GameobjectRespawn.pack", query = "UPDATE GameobjectRespawn g SET g.gameobjectRespawnPK.instance = :newinstance WHERE g.gameobjectRespawnPK.instance = :instance"),
     @NamedQuery(name = "GameobjectRespawn.delete", query = "DELETE FROM GameobjectRespawn g WHERE g.gameobjectRespawnPK.guid = :guid AND g.gameobjectRespawnPK.instance = :instance"),
     @NamedQuery(name = "GameobjectRespawn.findByGuid", query = "SELECT g FROM GameobjectRespawn g WHERE g.gameobjectRespawnPK.guid = :guid"),
     @NamedQuery(name = "GameobjectRespawn.findByRespawntime", query = "SELECT g FROM GameobjectRespawn g WHERE g.respawntime = :respawntime"),
